@@ -1,0 +1,153 @@
+h1 {
+	font-family: 'Jura', sans-serif;
+	font-size: 40px;
+	text-align: center;
+}
+
+h2 {
+	font-family: 'Cabin Sketch', cursive;
+	margin-left: 40px;
+	color: gray;
+}
+
+h3 {
+	font-family: 'Palanquin', sans-serif;
+}
+
+body {
+	padding-left:10%;
+	padding-right:10%;
+	padding-bottom:40px;
+}
+
+.banner {
+	margin-bottom: 2em;
+	text-align:right;	
+	border-bottom: 5px solid gray;
+}
+
+.banner_name {
+	font-size: 55px;
+	margin-bottom: 0;
+	margin-top: 50px;
+}
+
+.banner_tag	{
+	font-size: 30px;
+	margin-top: 0;
+}
+
+.social_media {
+	padding-top: 1.5em;
+}
+
+img {
+	max-width: 100%;
+    height: auto;
+}
+
+
+.about {
+	font-size: 28px;
+	padding: 2em 0;
+	line-height: 1.50;
+	padding: 2.5em;
+	background: #f7f7f7; 	
+}
+
+.row h2 {
+	font-size: 40px;
+	margin-left: 0;
+}
+
+.figure {
+	margin: auto;
+}
+
+.figure img {
+	border: 2px solid #999;
+	border-radius: 4px;
+}
+
+figcaption {
+	text-align: center;
+}
+
+@media screen and (max-width: 650px)  {
+	.banner_logo {
+		display: block;
+		margin: auto;
+		
+		.about {
+		padding: 15px;
+	}
+	}
+	
+	.about {
+		font-size: 20px;
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.social_media img {
+		max-width:50%;
+	}
+	
+	.banner_logo {
+		display: block;
+		margin: auto;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.social_media img {
+		max-width:70%;
+	}
+	
+}
+
+@media screen and (max-width: 991px) {
+	.banner {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.social_media img {
+		display:block;
+		margin:auto;
+	}
+}	
+
+
+@media screen and (min-width: 1200px) {
+	.social_media img {
+		max-width:80%;
+	}
+	
+	.social_media {
+		margin-top: 12em;
+		padding-left: 0;
+	}	
+
+	.social_media .col-lg-12 {
+		padding-left: 0;
+		margin-bottom: 20px;
+	}
+	
+	.social_media .twitter-icon {
+		margin-bottom: 8px;  
+	}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
