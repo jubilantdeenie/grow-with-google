@@ -1,9 +1,10 @@
 /*
  * Create a list that holds all of your cards
  
- - reset misses and match set to 0
- - shuffle
+ - reset misses and match set to 0 for timer
+ - remove modal button
  - fix double click on same card
+ - remove image from modal 
  
  */
  
