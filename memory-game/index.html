@@ -13,133 +13,139 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
+    <div class="content container-fluid">
+        
+		<div class="row">
+		<header class="banner col-lg-12">
             <h1>Coffee Break Matching Game</h1>
         </header>
-
+		</div>
      <!-- display stars, clicks, time -->	
-		<div class="container-fluid">
-		  <section class="row score-panel">
-				<div class="col-4">
+		  <section class="row score-panel col-xs-12">
+				<div class= "details">
+					<ul class="stars col-xs-12">
+						<li><i class="fa fa-star"></i></li>
+						<li><i class="fa fa-star"></i></li>
+						<li><i class="fa fa-star"></i></li>
+					</ul>
+					
+					<div class="stats">
+						<div class="col-xs-12 col-md-6">
+						<p class="timer">Time:</p>
+						<span class="moves">0</span> Missed	
+						<span class="matches">0</span> Matched		
+						</div>
+						
+						<!-- display replay-->
+						<div class="reset col-xs-12 col-md-6">	
+								<ul>
+									<li class="restart">
+									<i class="fa fa-repeat"></i>
+									</li>
+								</ul>
+						</div>	
+					</div>
+				</div>
+			</section> 										,
+			
+			
+        <div class="row">
+			<div class="widescreen col-lg-10">
+				<ul class="deck col-xs-12">
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+					<li class="card col-lg-3">
+						<img class="icon" src="">
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+	
+
+<div class="row col-lg-10">
+	<!-- Trigger/Open The Modal -->
+	<button id="myBtn">Open Modal</button>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+		<span class="close">&times;</span>
+		<p>Winner!</p>
+		
+		<!-- display stars, clicks, time -->	
+		  <section class="score-panel">
 				<ul class="stars">
 					<li><i class="fa fa-star"></i></li>
 					<li><i class="fa fa-star"></i></li>
 					<li><i class="fa fa-star"></i></li>
 				</ul>
-				</div>
-				
-				<div class="col-4">
+
 				<p class="timer">Time:</p>
-				<span class="moves">0</span> Missed	
-				<span class="matches">0</span> Matched		
-				</div>
-				
-				<!-- display replay-->
-				<div class="col-4">	
-					<p>Reset</p>
+				<span class="moves">0</span> Missed			
+		
+				<!--display replay-->	
+				<p>Give it another go?</p>
 					<ul>
 						<li class="restart">
 							<i class="fa fa-repeat"></i>
 						</li>
 					</ul>	
-				</div>
-			</section> 
-		</div>
-
-        <ul class="deck">
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-            <li class="card">
-                <i class="fa"></i>
-            </li>
-        </ul>
-    </div>
-	
-	<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Winner!</p>
-	
-	<!-- display stars, clicks, time -->	
-	  <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-        	<p class="timer">Time </p>
-			<span class="moves">0</span> Missed			
-			<p>Give it another go?</p>
-	
-			<!--display replay-->
-            <div>	
-				<ul>
-					<li class="restart">
-						<i class="fa fa-repeat"></i>
-					</li>
-				</ul>	
-        	</div>
-        </section>
-	
-  </div>
-
+			</section>
+		
+	  </div>
+	</div>
 </div>
 	
 
     <script src="js/app.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
 </html>

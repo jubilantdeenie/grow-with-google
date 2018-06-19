@@ -27,6 +27,7 @@ body {
     padding: 0;
 }
 
+
 body {
     /* Background pattern from Free HD Wallpapers 
 	link http://freehdw.com/wallpaper/vintage-pattern-desktop-free-139143.html */
@@ -36,9 +37,10 @@ body {
     font-family: 'Nothing You Could Do', cursive;
 	font-size: 25px;
 	font-weight: bold;
+	line-height: 1;
 }
 
-.container {
+.container-fluid {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,9 +52,34 @@ h1 {
 	font-size: 42px;
 	background: #9a3016; 
 	color: #e5bf80;
-	padding: 5px 57px;
+	padding: 10px 1em;
+	border: 8px solid #e29b27;
+	border-radius: 12px;
+	margin: 10px;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+.details {
+	background: #e29b27 url("https://cdn.pixabay.com/photo/2017/10/13/15/29/background-2847957_960_720.jpg"); /*Image source Pixabay.com*/
+	background-size: 100%;
+	background-repeat: no-repeat 0 0;
+    background-position: center;
+	height: 200px;
+	width: 100%;
+	color: #3d0e08;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	border-radius: 6px;
+}
+
+.stats {
+	background: #e5bf80;
+	height: 85%;
+	width: 45%;
+	text-align: left;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	border-radius: 11px;
+	padding-top: 10px;
+}
 
 /*
  * Styles for the deck of cards
@@ -62,25 +89,23 @@ h1 {
     width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #3d0e08 0%, #9a3016 100%);
-    padding: 32px;
+    padding: 24px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 3em;
+    margin: -.5em;
 }
 
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #ffffff url("file:///C:/Users/Student/Desktop/memory-game/images/coffee-stain-1.svg");
+    background: #3d0e08 url("https://www.stockvault.net/data/2012/07/31/133242/preview16.jpg"); /* free image from Stockvault.net */
 	background-size: 125px 125px;
 	background-repeat: no-repeat;
     background-position: right top;
-    font-size: 0;
-    color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -95,14 +120,19 @@ h1 {
     cursor: default;
 }
 
+.card img {
+	width: 72px;
+	height: 72px;
+}
+
 .deck .card.show {
     font-size: 33px;
 }
 
 .deck .card.match {
     cursor: default;
-	background: #e29b27 url("https://www.stockvault.net/data/2012/07/31/133242/preview16.jpg"); /* free image from Stockvault.net */
-    background-size: 170%;
+	background: #ffffff url("file:///C:/Users/Student/Desktop/memory-game/images/coffee-stain-1.svg");
+    background-size: 100%;
 	font-size: 33px;
 }
 
@@ -111,37 +141,47 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 660px;
-    margin-bottom: 10px;
-	background: #e29b27 url("https://cdn.pixabay.com/photo/2017/10/13/15/29/background-2847957_960_720.jpg"); /*Image source Pixabay.com*/
-	background-size: 100%;
-	background-repeat: no-repeat 0 0;
-    background-position: center;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
+    padding: 10px;
+	margin: 3px;
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin-left: auto;
+	margin-right: auto;
 }
 
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
-	font-size: 60px;
+	font-size: 55px;
 	color: #f8ce58;
 }
 
-.score-panel .restart {
-    float: right;
-    cursor: pointer;
+.score-panel .matches,
+.score-panel .moves {
+	padding: 5px;
+	margin: 5px;
+	margin-bottom: 2px;
 }
 
-/* Remove bullet point */
-.restart {
+.score-panel .reset{
+	margin-top: 8px;
+}
+
+.score-panel .restart {
+    float: left;
+    cursor: pointer;
+	margin: 5px;
 	list-style: none;
+}
+
+.score-panel .fa-repeat {
+	float: left;
+	margin: -14px;
+	padding: 0;
 }
 
 
@@ -181,4 +221,57 @@ h1 {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 449px) {	
+	.container-fluid { 
+		width: 100%;
+		overflow-x: auto;
+	}
+}
+
+@media screen and (min-width: 450px) and (max-width: 599px) {	
+	.details {
+		background-size: 109%;	
+
+	}	
+	.deck .card {
+		width: 95px;
+		height: 95px;
+		background-size: 95px 95px;
+	}
+	.deck {
+		width: 100%;
+	}
+	.row (
+		margin-left: -32px;
+		margin-right: -32px;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 749px) {	
+	.container-fluid {
+		margin-left: 2em;
+		margin-right: 2em;
+	}	
+	.deck {
+		width: 100%;
+	}
+	.row (
+		margin-left: -32px;
+		margin-right: -32px;
+	}
+}
+
+
+@media screen and (min-width: 750px) {	
+	.row { 
+		width: 680px;
+		padding-left: 3em;
+		padding-right: 3em;
+	}
+	.container-fluid {
+		margin-left: 300px;
+		margin-right: 300px;
+	}
 }

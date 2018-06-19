@@ -1,16 +1,17 @@
 /*
  * Create a list that holds all of your cards
- 
- - reset misses and match set to 0 for timer
- - remove modal button
+ - insert icons
+ - reset misses and match set to 0 for timer/display timer
  - fix double click on same card
- - remove image from modal 
+ - remove modal button
+ - remove/replace image from modal (?)
+ - write readme
  
  */
  
  // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -23,12 +24,20 @@ function shuffle(array) {
     return array;
 }
 
+let grinder="https://cdn0.iconfinder.com/data/icons/coffee-brewing-glyph/16/7-512.png";
+let chemex="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_chemex-512.png";
+let plant="https://cdn1.iconfinder.com/data/icons/barista/256/barista-icons_coffea-arabica-512.png";
+let house="https://cdn1.iconfinder.com/data/icons/barista/256/barista-icons_coffee-shop-sign-512.png";
+let cup="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_coffee-to-go-512.png";
+let espresso="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_espresso-machine-with-cup-512.png";
+let perk="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_espresso-maker-512.png";
+let press="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_french-press-512.png";
 
-
-let deck = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb'];
+let deck = [grinder, grinder, chemex, chemex, plant, plant, house, house, cup, cup, espresso, espresso, perk, perk, press, press]
+//let deck = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb'];
 let deal = shuffle(deck);
 
-
+ 
  let clickCount = 0; 
  
  let turnCount = 0;
@@ -39,6 +48,8 @@ let deal = shuffle(deck);
  
  let pickOne;
  
+ let icon;
+ 
  let start;
  
  let finish;
@@ -46,18 +57,25 @@ let deal = shuffle(deck);
  let time;
  
  let starRate;
+ 
+ let clearCards;
    
   
  let cards = document.querySelectorAll('.deck li');
  //console.log(cards);
  
+ 
 
 for (i = 0;i < 16; i++){
 
 	let shuffle = cards[i].childNodes[1];
-	shuffle.classList.add(deal[i]);
 	
-	console.log(shuffle);
+	//////////
+	//shuffle.classList.add(deal[i]);   // < attribute  src=    deal[i]
+	shuffle.src = deal[i];
+	shuffle.style.visibility = 'hidden';
+	
+	//console.log(shuffle);
 	
 }
  
@@ -71,32 +89,39 @@ for (i = 0;i < 16; i++){
 		
 			clickCount += 1;
 			
-			this.classList.add('show');
+			this.childNodes[1].style.visibility = 'visible';
+		
 						
 			
 			if (clickCount == 1) {
 				cardOne = this;
-				pickOne = cardOne.childNodes[1].classList;
+				pickOne = cardOne.childNodes[1].src;
 				cardOne.classList.add('open');			
 			}
 			
 			if (clickCount == 2) {
 				
 				cardTwo = this;
-				let pickTwo = cardTwo.childNodes[1].classList;
+				
+				/////////
+				let pickTwo = cardTwo.childNodes[1].src;  
 				
 				cardTwo.classList.add('open');
 				
 								
-				if(pickOne[1] == pickTwo[1]){
+				if(pickOne == pickTwo){
 								
 					cardTwo.classList.add('match');
 									
 					cardOne.classList.add('match');
+					
+					console.log('match');
 									
 					matchCount += 1;
 				
 					document.getElementsByClassName('matches')[0].textContent= (matchCount);
+					
+					clickCount = 0;
 					
 					
 					if (matchCount == 1) {
@@ -110,17 +135,20 @@ for (i = 0;i < 16; i++){
 
 						time = minutes + ":" + seconds;
 						
+						console.log('this works');
+						
 
 						let testVar = document.getElementsByClassName('timer');
 						
-						testVar[0].textContent = ('Time: ' + time + ' seconds');
-						testVar[1].textContent = ('Time: ' + time + ' seconds');
+						testVar[0].textContent = ('Time ' + time + ' seconds');
+						testVar[1].textContent = ('Time ' + time + ' seconds');
 						
+						console.log(testVar);
 						
 						//display popup 
 						document.getElementById('myModal').style.display = 'block';	
 												
-						//resetDeck();
+						resetDeck();
 						
 						//clearCards = cards[i].classList.remove('show', 'open', 'match');
 						
@@ -137,12 +165,17 @@ for (i = 0;i < 16; i++){
 						cardTwo.classList.remove('open', 'show');
 						cardOne.classList.remove('open', 'show');
 						
+						cardTwo.childNodes[1].style.visibility = 'hidden';
+						cardOne.childNodes[1].style.visibility = 'hidden';
+						
+						
+						
 						turnCount += 1;
 						
 						//display turnCount
 										
-						document.getElementsByClassName('moves')[0].textContent= (turnCount);
 						document.getElementsByClassName('moves')[1].textContent= (turnCount);
+						document.getElementsByClassName('moves')[0].textContent= (turnCount);
 										
 						let starRate = document.getElementsByClassName('fa-star');
 
@@ -171,12 +204,14 @@ restart[0, 1].addEventListener('click', function(event){
 	
 function resetDeck(){
 	for (i = 0; i < cards.length; i++) {
-		cards[i].classList.remove('show', 'open', 'match');	
+		cards[i].classList.remove('show', 'open', 'match');
+		cardTwo.childNodes[1].style.visibility = 'hidden';
+		cardOne.childNodes[1].style.visibility = 'hidden';
 		//window.setTimeout(resetDeck, 1000);
 	}
 	matchCount = 0;
 	turnCount = 0;
-	clickCount = 0;			
+	clickCount = 0;		
 }
 
 // Get the modal
