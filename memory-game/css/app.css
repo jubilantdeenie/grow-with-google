@@ -59,6 +59,11 @@ h1 {
 	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+.row {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .details {
 	background: #e29b27 url("https://cdn.pixabay.com/photo/2017/10/13/15/29/background-2847957_960_720.jpg"); /*Image source Pixabay.com*/
 	background-size: 100%;
@@ -66,9 +71,12 @@ h1 {
     background-position: center;
 	height: 200px;
 	width: 100%;
+	max-width: 880px;
 	color: #3d0e08;
 	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 	border-radius: 6px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .stats {
@@ -172,9 +180,9 @@ h1 {
 }
 
 .score-panel .restart {
-    float: left;
+    float: right;
     cursor: pointer;
-	margin: 5px;
+	margin: 10px;
 	list-style: none;
 }
 
@@ -195,17 +203,25 @@ h1 {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background: #fefefe url("http://www.psdgraphics.com/wp-content/uploads/2011/08/vintage-burst.jpg"); /* photo by psdgraphics.com */
+	background-size: 148%;
+	/*background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-	background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
+	/*background-color: #fefefe;*/
+    margin: 10% auto; /* 15% from the top and centered */
+	padding: 20px;
+    border: 23px solid #e5bf80;
+	border-radius: 13px;
+	text-align: right;
     width: 80%; /* Could be more or less, depending on screen size */
+	max-width: 800px;
+	background: #e5bf80 url("http://freefoodphotos.com/imagelibrary/drink/milky_coffee.jpg"); /* photo by freefoodphotos.com */
+	background-size: 100%;
+	background-position: center;
 }
 
 /* The Close Button */
