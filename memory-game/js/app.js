@@ -1,10 +1,8 @@
 /*
- - close modal at restart 
- - reset misses and match set to 0 for timer/display timer
- - fix double click on same card
  - remove modal button
- - fix replay click and position on modal
  - write readme
+ - break points
+
  
  */
  
@@ -55,37 +53,27 @@ let deal = shuffle(deck);
  
  let icon;
  
+ let displayTime;
+ 
+ let stopwatch = document.getElementsByClassName('timer');
+ 
  let start;
  
  let finish;
  
  let time;
  
- let starRate;
-  
+ let starRate = document.getElementsByClassName('fa-star');
+    
  let clearCards;
  
  let game;
-   
-  
+ 
  let cards = document.querySelectorAll('.deck li');
  //console.log(cards);
  
  
-
-for (i = 0;i < 16; i++){
-
-	let shuffle = cards[i].childNodes[1];
-	
-	//////////
-	//shuffle.classList.add(deal[i]);   // < attribute  src=    deal[i]
-	shuffle.src = deal[i];
-	shuffle.style.visibility = 'hidden';
-	
-	//console.log(shuffle);
-	
-}
- 
+ play(cards, deal); 
  
 
 	for (i = 0; i < cards.length; i++) {
@@ -93,25 +81,39 @@ for (i = 0;i < 16; i++){
 		let card = cards[i];
 			
 		card.addEventListener ('click', function(event) {
+			
+			
+			
 		
 		if(!game){
 			start = performance.now();
-		}
+			
+			game = true;
+	
+			displayTime = setInterval(startDisplay, 1000);
 
-		game = true;
+
+		}
 		
-		clickCount += 1;
+		clickCount += 1; 		
+		
+		
+		this.classList.add('flip-2-hor-bottom-1');
+		
+		console.log(this);
 		
 		this.childNodes[1].style.visibility = 'visible';
-				
+							
 		
 		if (clickCount == 1) {
+			
 			cardOne = this;
+			
 			pickOne = cardOne.childNodes[1].src;
+			
 			cardOne.classList.add('open');	
-			//this.style.pointerEvents = "none";
 			
-			
+			this.style.pointerEvents = "none";			
 		}
 
 		
@@ -119,8 +121,8 @@ for (i = 0;i < 16; i++){
 			
 			cardTwo = this;
 			
-			/////////
 			let pickTwo = cardTwo.childNodes[1].src;  
+			
 			cardTwo.classList.add('open');
 							
 			if(pickOne == pickTwo){
@@ -134,58 +136,68 @@ for (i = 0;i < 16; i++){
 				matchCount += 1;
 			
 				document.getElementsByClassName('matches')[0].textContent= (matchCount);
-			
+				
 				this.style.pointerEvents = "auto";
 				
 				clickCount = 0;
 		
 			}
+			
+				
+				
+			if (matchCount == 3) {
 							
-		
+				game = false;
 				
-			if (matchCount == 1) {
-				finish = performance.now();	
-
-				let totalSeconds = ((finish - start)/1000).toFixed(0);
-				
-				let minutes = (totalSeconds/60).toFixed(0);
-
-				let seconds = totalSeconds % 60;
-
-				time = minutes + ":" + seconds;
-				
-				console.log('this works');
-				
-
-				let testVar = document.getElementsByClassName('timer');
-				
-				testVar[0].textContent = ('Time ' + time + ' seconds');
-				testVar[1].textContent = ('Time ' + time + ' seconds');
-				
-				console.log(testVar);
+				stopwatch[1].textContent = ('Time ' + time + ' seconds');
 				
 				//display popup 
 				document.getElementById('myModal').style.display = 'block';	
-										
-				resetDeck();						
 				
-				//shuffle();
+				starRate[3].classList.add('rotate-scale-up');
+				console.log(starRate[4]);
+				starRate[4].classList.add('rotate-scale-up');
+				starRate[5].classList.add('rotate-scale-up');
+				
+				resetDeck();
+				
 			}
 						
 			else {
 				
-				window.setTimeout(resetCards, 432);
-
+				
+				window.setTimeout(resetCards, 1000);
 				
 				function resetCards(){
+					
+					// 2adds?......
+					cardOne.classList.add('flip-2-hor-bottom-2');
+					cardTwo.classList.add('flip-2-hor-bottom-2');
+					
+					console.log(cardOne);
+					console.log(cardTwo);
 					
 					cardTwo.classList.remove('open', 'show');
 					cardOne.classList.remove('open', 'show');
 					
 					cardTwo.childNodes[1].style.visibility = 'hidden';
 					cardOne.childNodes[1].style.visibility = 'hidden';
+
 					
-					//document.cards[i].style.pointerEvents = "auto";
+					window.setTimeout(removeAnimation, 300);
+				
+					function removeAnimation() {
+						
+						cardOne.classList.remove('flip-2-hor-bottom-2','flip-2-hor-bottom-1');
+						cardTwo.classList.remove('flip-2-hor-bottom-2', 'flip-2-hor-bottom-1');
+					
+					}
+				
+					console.log(cardOne);
+					console.log(cardTwo);
+					
+					
+					cardOne.style.pointerEvents = "auto";
 					
 					turnCount += 1;
 					
@@ -194,14 +206,13 @@ for (i = 0;i < 16; i++){
 					document.getElementsByClassName('moves')[1].textContent= (turnCount);
 					document.getElementsByClassName('moves')[0].textContent= (turnCount);
 									
-					let starRate = document.getElementsByClassName('fa-star');
 
-					if (turnCount == 3) {
+					if (turnCount == 4) {
 						
 						starRate[2].style.visibility = 'hidden';	
 						starRate[5].style.visibility = 'hidden';	
 					}
-					if (turnCount == 6) {
+					if (turnCount == 8) {
 						
 						starRate[1].style.visibility = 'hidden'; 
 						starRate[3].style.visibility = 'hidden'; 
@@ -222,20 +233,102 @@ function resetDeck(){
 		cardOne.childNodes[1].style.visibility = 'hidden';
 		//window.setTimeout(resetDeck, 1000);
 	}
+	
+	document.getElementsByClassName('matches')[0].textContent= ('');
+	document.getElementsByClassName('moves')[0].textContent= ('');
+	document.getElementsByClassName('timer')[0].textContent= ('Time:');
+	
 	matchCount = 0;
 	turnCount = 0;
-	clickCount = 0;		
-	game = false;
+	clickCount = 0;	
+	
+	clearInterval(displayTime);
+	console.log('resetDeck');
+	
+	deal = shuffle(deck);
+	play(cards, deal);
+	
 }
 
 let restart = document.getElementsByClassName('fa-repeat');
 
-console.log('yup');
+console.log(restart);
 
-restart[0, 1].addEventListener('click', function(event){
-	resetDeck();
-	console.log('nope');
-});
+
+for(i = 0; i < 2; i++){		
+	restart[i].addEventListener('click', function(event){
+		resetDeck();
+		modal.style.display = "none";
+		clearInterval(displayTime);
+		console.log('eventListener');
+	});
+}
+
+
+function play(cards, deal){
+
+	for (i = 0;i < 16; i++){
+
+		let shuffle = cards[i].childNodes[1];
+	
+		shuffle.src = deal[i];
+		
+		shuffle.style.visibility = 'hidden';
+		
+		console.log('shuffle');
+				
+	}
+}
+
+function startDisplay() {
+			
+	currentTime = performance.now();	
+		
+	let totalSeconds = ((currentTime - start)/1000).toFixed(0);
+	
+	let minutes = (totalSeconds/60).toFixed(0);
+
+	let seconds = totalSeconds % 60;
+
+	time = minutes + ":" + seconds;
+	
+	stopwatch[0].textContent = ('Time ' + time);
+}
+
+
+
+
+
+
+
+/* function startDisplay(){
+	if(game == true){
+	
+		window.setTimeout(displayTime, 1000);
+		function displayTime(){
+			
+			currentTime = performance.now();	
+				
+			
+			let totalSeconds = ((currentTime - start)/1000).toFixed(0);
+			
+			let minutes = (totalSeconds/60).toFixed(0);
+
+			let seconds = totalSeconds % 60;
+
+			time = minutes + ":" + seconds;
+		
+			
+			console.log('tick');
+			stopwatch[0].textContent = ('Time ' + time + ' seconds');
+		}
+	}
+}
+
+*/
+
+
+
 
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -246,10 +339,6 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -264,7 +353,33 @@ window.onclick = function(event) {
 }
 
 
-/*//display moves
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+//display moves
 const displayMoves = document.createDocumentFragment();
 
 if (matchCount == 0) {

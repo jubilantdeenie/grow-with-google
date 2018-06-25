@@ -16,36 +16,51 @@
     <div class="content container-fluid">
         
 		<div class="row">
-		<header class="banner col-lg-12">
+		<header class="banner col-12">
             <h1>Coffee Break Matching Game</h1>
         </header>
 		</div>
      <!-- display stars, clicks, time -->	
-		  <section class="row score-panel col-xs-12">
-				<div class= "details">
-					<ul class="stars col-xs-12">
-						<li><i class="fa fa-star"></i></li>
-						<li><i class="fa fa-star"></i></li>
-						<li><i class="fa fa-star"></i></li>
-					</ul>
-					
-					<div class="stats">
-						<div class="col-xs-12 col-md-6">
-						<p class="timer">Time:</p>
-						<span class="moves">0</span> Missed	
-						<span class="matches">0</span> Matched		
-						</div>
-						
-						<!-- display replay-->
-						<div class="reset col-xs-12 col-md-6">	
-								<ul>
-									<li class="restart">
-									<i class="fa fa-repeat"></i>
-									</li>
-								</ul>
-						</div>	
+		  <section class="row score-panel">
+				<div class= "details col-4">
+					<div>
+						<ul class="stars">
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+						</ul>
 					</div>
+						
+					<div>
+						<p><span class="moves">0</span> Missed</p>
+					</div>
+					
+					<div>
+						<p><span class="matches">0</span> Matched</p>		
+					</div>
+												
+				</div>	
+						
+				<div class="stats col-4">
+					
+					<p class="timer">Time:</p>
+					
+					<p>Refill?</p>
+					
+					<!-- display replay-->
+					<div class="reset">	
+							<ul>
+								<li class="restart">
+								<i class="fa fa-repeat"></i>
+								</li>
+							</ul>
+					</div>	
 				</div>
+
+					
+					
+					
+				
 			</section> 										,
 			
 			
@@ -107,8 +122,6 @@
 	
 
 <div class="row col-lg-10">
-	<!-- Trigger/Open The Modal -->
-	<button id="myBtn">Open Modal</button>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
