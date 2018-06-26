@@ -1,42 +1,22 @@
-/*
- - remove modal button
- - write readme
- - break points
+
+ // icon vars
+ let grinder="https://cdn0.iconfinder.com/data/icons/coffee-brewing-glyph/16/7-512.png";
+ let chemex="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_chemex-512.png";
+ let plant="https://cdn1.iconfinder.com/data/icons/barista/256/barista-icons_coffea-arabica-512.png";
+ let house="https://cdn1.iconfinder.com/data/icons/barista/256/barista-icons_coffee-shop-sign-512.png";
+ let cup="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_coffee-to-go-512.png";
+ let espresso="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_espresso-machine-with-cup-512.png";
+ let perk="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_espresso-maker-512.png";
+ let press="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_french-press-512.png";
 
  
- */
- 
- // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+ // shuffle vars
+ let deck = [grinder, grinder, chemex, chemex, plant, plant, house, house, cup, cup, espresso, espresso, perk, perk, press, press]
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-let grinder="https://cdn0.iconfinder.com/data/icons/coffee-brewing-glyph/16/7-512.png";
-let chemex="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_chemex-512.png";
-let plant="https://cdn1.iconfinder.com/data/icons/barista/256/barista-icons_coffea-arabica-512.png";
-let house="https://cdn1.iconfinder.com/data/icons/barista/256/barista-icons_coffee-shop-sign-512.png";
-let cup="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_coffee-to-go-512.png";
-let espresso="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_espresso-machine-with-cup-512.png";
-let perk="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_espresso-maker-512.png";
-let press="https://cdn2.iconfinder.com/data/icons/barista/256/barista-icons_french-press-512.png";
-
-let deck = [grinder, grinder, chemex, chemex, plant, plant, house, house, cup, cup, espresso, espresso, perk, perk, press, press]
-
-//let deck = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb'];
-
-let deal = shuffle(deck);
+ let deal = shuffle(deck);
 
  
+ // game vars
  let clickCount = 0; 
  
  let turnCount = 0;
@@ -53,6 +33,10 @@ let deal = shuffle(deck);
  
  let icon;
  
+ let cards = document.querySelectorAll('.deck li');
+ 
+ 
+ // timer vars
  let displayTime;
  
  let stopwatch = document.getElementsByClassName('timer');
@@ -63,41 +47,35 @@ let deal = shuffle(deck);
  
  let time;
  
+ 
+ // scoreboard vars
  let starRate = document.getElementsByClassName('fa-star');
     
  let clearCards;
  
  let game;
  
- let cards = document.querySelectorAll('.deck li');
- //console.log(cards);
- 
- 
+
+ // start game
  play(cards, deal); 
  
-
+// timer starts when first card is clicked
 	for (i = 0; i < cards.length; i++) {
 		
 		let card = cards[i];
 			
 		card.addEventListener ('click', function(event) {
-			
-			
-			
-		
+					
 		if(!game){
 			start = performance.now();
 			
 			game = true;
 	
 			displayTime = setInterval(startDisplay, 1000);
-
-
 		}
 		
 		clickCount += 1; 		
-		
-		
+				
 		this.classList.add('flip-2-hor-bottom-1');
 		
 		console.log(this);
@@ -116,7 +94,7 @@ let deal = shuffle(deck);
 			this.style.pointerEvents = "none";			
 		}
 
-		
+// display match count		
 		if (clickCount == 2 && this != cardOne) {     
 			
 			cardTwo = this;
@@ -143,15 +121,14 @@ let deal = shuffle(deck);
 		
 			}
 			
-				
-				
-			if (matchCount == 3) {
+ //winning conditions			
+			if (matchCount == 2) {
 							
 				game = false;
 				
 				stopwatch[1].textContent = ('Time ' + time + ' seconds');
 				
-				//display popup 
+ //display popup modal 
 				document.getElementById('myModal').style.display = 'block';	
 				
 				starRate[3].classList.add('rotate-scale-up');
@@ -159,18 +136,16 @@ let deal = shuffle(deck);
 				starRate[4].classList.add('rotate-scale-up');
 				starRate[5].classList.add('rotate-scale-up');
 				
-				resetDeck();
-				
+				resetDeck();				
 			}
 						
 			else {
 				
-				
+// no match, display miss, and reset cards				
 				window.setTimeout(resetCards, 1000);
 				
 				function resetCards(){
 					
-					// 2adds?......
 					cardOne.classList.add('flip-2-hor-bottom-2');
 					cardTwo.classList.add('flip-2-hor-bottom-2');
 					
@@ -201,11 +176,11 @@ let deal = shuffle(deck);
 					
 					turnCount += 1;
 					
-					//display turnCount
 									
 					document.getElementsByClassName('moves')[1].textContent= (turnCount);
 					document.getElementsByClassName('moves')[0].textContent= (turnCount);
-									
+
+// misses change star rating					
 
 					if (turnCount == 4) {
 						
@@ -225,7 +200,23 @@ let deal = shuffle(deck);
 		}
 	});
 }
+
+ // shuffle function from http://stackoverflow.com/a/2450976 
+ function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 	
+// reset deck and clear score-board
 function resetDeck(){
 	for (i = 0; i < cards.length; i++) {
 		cards[i].classList.remove('show', 'open', 'match');
@@ -250,6 +241,7 @@ function resetDeck(){
 	
 }
 
+// click 'fa' to replay
 let restart = document.getElementsByClassName('fa-repeat');
 
 console.log(restart);
@@ -264,7 +256,7 @@ for(i = 0; i < 2; i++){
 	});
 }
 
-
+// add card icons
 function play(cards, deal){
 
 	for (i = 0;i < 16; i++){
@@ -274,12 +266,11 @@ function play(cards, deal){
 		shuffle.src = deal[i];
 		
 		shuffle.style.visibility = 'hidden';
-		
-		console.log('shuffle');
 				
 	}
 }
 
+// timer 
 function startDisplay() {
 			
 	currentTime = performance.now();	
@@ -295,111 +286,23 @@ function startDisplay() {
 	stopwatch[0].textContent = ('Time ' + time);
 }
 
+// get modal
+const modal = document.getElementById('myModal');
 
+// get <span> element to close the modal
+const span = document.getElementsByClassName("close")[0];
 
-
-
-
-
-/* function startDisplay(){
-	if(game == true){
-	
-		window.setTimeout(displayTime, 1000);
-		function displayTime(){
-			
-			currentTime = performance.now();	
-				
-			
-			let totalSeconds = ((currentTime - start)/1000).toFixed(0);
-			
-			let minutes = (totalSeconds/60).toFixed(0);
-
-			let seconds = totalSeconds % 60;
-
-			time = minutes + ":" + seconds;
-		
-			
-			console.log('tick');
-			stopwatch[0].textContent = ('Time ' + time + ' seconds');
-		}
-	}
-}
-
-*/
-
-
-
-
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-
-// When the user clicks on <span> (x), close the modal
+// when the user clicks on <span> (x), close modal
 span.onclick = function() {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// when the user clicks anywhere outside of modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-//display moves
-const displayMoves = document.createDocumentFragment();
-
-if (matchCount == 0) {
-	let testVar = document.getElementsByClassName('moves')[0];
-	testVar.appendChild(displayMoves);
-	//console.log(testVar);
-}
-
-//console.log(displayMoves); */
-
-
-
-
-
-
-/*reset.addEventListener("click", function(){
-    document.querySelector(".deck").innerHTML = "";
-    movesCounter.textContent= "0";
-    start();
-}); */
 
 
 	
