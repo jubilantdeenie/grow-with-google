@@ -2,19 +2,33 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [About](#about)
+* [Attributions](#attributions)
+* [Known Issues](#knownissues)
 * [Contributing](#contributing)
 
-## Instructions
+## About 
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This project was made as part of Udacity coursework for Web Programming with Javascript. In addition to adding JavaScript functionality, HTML and CSS styling has been modified from the original content provided. Modal window and formatting by Bootstrap. A coffee themed aesthetic has been added to enhance user experience. 
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Attributions
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+All borrowed material comes from open content sources. 
+
+Icon images by Iconfinder.com.
+
+CSS animations by Animista.net.
+
+Images by Stockvault.com, Pixabay.com, Freehdw.com, Onlygfx.com, Psdgraphics.com, and Freefoodphotos.com.
+
+Shuffle function provided by Stackoverflow.com.
+
+Direct links found in comments.
+
+## Known Issues
+
+Clicking more than two cards before the turn reset will cause the game to glitch. 
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+This is an educational project and will therefore not be accepting contributions.
