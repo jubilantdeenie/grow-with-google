@@ -108,21 +108,19 @@
 				cardTwo.classList.add('match');
 								
 				cardOne.classList.add('match');
-				
-				console.log('match');
 								
 				matchCount += 1;
 			
 				document.getElementsByClassName('matches')[0].textContent= (matchCount);
 				
-				this.style.pointerEvents = "auto";
+				cardOne.style.pointerEvents = "auto";
 				
 				clickCount = 0;
 		
 			}
 			
  //winning conditions			
-			if (matchCount == 2) {
+			if (matchCount == 8) {
 							
 				game = false;
 				
@@ -132,7 +130,6 @@
 				document.getElementById('myModal').style.display = 'block';	
 				
 				starRate[3].classList.add('rotate-scale-up');
-				console.log(starRate[4]);
 				starRate[4].classList.add('rotate-scale-up');
 				starRate[5].classList.add('rotate-scale-up');
 				
@@ -182,12 +179,12 @@
 
 // misses change star rating					
 
-					if (turnCount == 4) {
+					if (turnCount == 5) {
 						
 						starRate[2].style.visibility = 'hidden';	
 						starRate[5].style.visibility = 'hidden';	
 					}
-					if (turnCount == 8) {
+					if (turnCount == 10) {
 						
 						starRate[1].style.visibility = 'hidden'; 
 						starRate[3].style.visibility = 'hidden'; 
@@ -216,13 +213,19 @@
     return array;
 }
 	
-// reset deck and clear score-board
+// reset stars, deck, and clear score-board
+
+function resetStars() {
+	for (i = 0; i < 6; i++) {	
+			starRate[i].style.visibility = 'visible';
+		}
+}
+
 function resetDeck(){
 	for (i = 0; i < cards.length; i++) {
 		cards[i].classList.remove('show', 'open', 'match');
 		cardTwo.childNodes[1].style.visibility = 'hidden';
 		cardOne.childNodes[1].style.visibility = 'hidden';
-		//window.setTimeout(resetDeck, 1000);
 	}
 	
 	document.getElementsByClassName('matches')[0].textContent= ('');
@@ -234,25 +237,24 @@ function resetDeck(){
 	clickCount = 0;	
 	
 	clearInterval(displayTime);
-	console.log('resetDeck');
 	
 	deal = shuffle(deck);
 	play(cards, deal);
 	
 }
 
-// click 'fa' to replay
+// click 'fa-repeat' to replay resets the board
 let restart = document.getElementsByClassName('fa-repeat');
-
-console.log(restart);
-
 
 for(i = 0; i < 2; i++){		
 	restart[i].addEventListener('click', function(event){
 		resetDeck();
+		
 		modal.style.display = "none";
-		clearInterval(displayTime);
-		console.log('eventListener');
+		
+		clearInterval(displayTime);	
+		
+		resetStars();
 	});
 }
 
@@ -294,13 +296,15 @@ const span = document.getElementsByClassName("close")[0];
 
 // when the user clicks on <span> (x), close modal
 span.onclick = function() {
-    modal.style.display = "none";
+    resetStars();
+	modal.style.display = "none";
 }
 
 // when the user clicks anywhere outside of modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+        resetStars();
+		modal.style.display = "none";
     }
 }
 
