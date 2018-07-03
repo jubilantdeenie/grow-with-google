@@ -28,9 +28,9 @@ body {
 }
 
 body {
-    /* background pattern from Free HD Wallpapers 
+    /* background pattern from Free HD Wallpapers
 	link http://freehdw.com/wallpaper/vintage-pattern-desktop-free-139143.html */
-	background: #ffffff url("http://data.freehdw.com/vintage-pattern-desktop-free.jpg"); 
+	background: #ffffff url("http://data.freehdw.com/vintage-pattern-desktop-free.jpg");
 	background-repeat: no-repeat 0 0;
     font-family: 'Nothing You Could Do', cursive;
 	font-size: 30px;
@@ -46,14 +46,14 @@ body {
 h1 {
     font-family: 'Life Savers', cursive;
 	font-size: 40px;
-	background: #9a3016; 
+	background: #9a3016;
 	color: #e5bf80;
 	padding: 10px 80px;
 	border: 8px solid #e29b27;
 	border-radius: 12px;
 	margin: 26px;
 	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-	text-align: center;	
+	text-align: center;
 }
 
 p {
@@ -216,7 +216,7 @@ ul {
 	border: 1px solid #3d0e08;
 	padding: 8px;
 	border-radius: 20px;
-}  
+}
 
 /* card animation */
 .flip-2-hor-bottom-1 {
@@ -237,26 +237,26 @@ ul {
 
 /* modal (background) */
 .modal {
-    display: none; 
+    display: none;
     position: fixed; 
-    z-index: 1; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%; 
-    overflow: auto; 
+    overflow: auto;
     background: #fefefe url("http://www.psdgraphics.com/wp-content/uploads/2011/08/vintage-burst.jpg"); /* photo by psdgraphics.com */
 	background-size: 148%;
 }
 
 /* modal box content */
 .modal-content {
-    margin: 10% auto; 
+    margin: 10% auto;
 	padding: 20px;
     border: 23px solid #e5bf80;
 	border-radius: 13px;
 	text-align: right;
-    width: 80%; 
+    width: 80%;
 	max-width: 800px;
 	background: #e5bf80 url("http://freefoodphotos.com/imagelibrary/drink/milky_coffee.jpg"); /* photo by freefoodphotos.com */
 	background-size: 124%;
@@ -279,22 +279,6 @@ ul {
     cursor: pointer;
 }
 
-
-
-
-@media screen and (max-width: 449px) {	
-	.container-fluid { 
-		width: 100%;
-		overflow-x: auto;
-	}
-.content .score-panel {
-		font-size: 22px;
-		width: 106%;
-	}	
-}
-
-
-
 @media screen and (min-width: 450px) and (max-width: 750px) {	
 	.banner h1 	{
 	font-size: 33px;
@@ -305,14 +289,14 @@ ul {
 	.score-panel {
 		font-size: 28px;
 		width: 100%;
-	}	
+	}
 	.score-panel .stars li {
 		font-size: 45px;
 	}
 }
 
 
-@media screen and (min-width: 750px) {	
+@media screen and (min-width: 750px) {
 	h1 {
 		max-width: 660px;
 		margin-left: auto;
