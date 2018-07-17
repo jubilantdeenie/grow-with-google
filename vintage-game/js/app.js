@@ -6,9 +6,9 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-	this.x = 50;
-	this.y = 50;
-	this.speed = 1;
+	this.x = 5;
+	this.y = 55;
+	this.speed = 0;
 	
 	
 };
@@ -20,8 +20,14 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	
+	this.x += this.speed;
+	//console.log(this.speed);
+	//console.log(this.x);
+	
 	
 };
+
+
 
 
 // Draw the enemy on the screen, required method for game
@@ -52,7 +58,7 @@ var Player = function() {
 	
 };
 
-// Update the enemy's position, required method for game
+// Update the player's position, required method for game
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
 
@@ -63,7 +69,7 @@ Player.prototype.update = function(dt) {
     // all computers.
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the player on the screen, required method for game
 Player.prototype.render = function() {
 	console.log(this.sprite);
     //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -82,29 +88,23 @@ var enemy;
 
 for (i = 0; i < 10; i++){
 	enemy = new Enemy();
+	
+	//enemy.y = 60;
+	
+	if (i <= 3){
+		enemy.y = 60;
+	}
+	else if (i <= 6){
+		enemy.y = 140;
+	}
+	else {
+		enemy.y = 225;
+	}
+	
 	allEnemies.push(enemy);
 }
 
 //console.log(allEnemies);
-
-var player = new Player();
-
-//player.render();
-
-console.log(player);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Place all enemy objects in an array called allEnemies
@@ -122,6 +122,11 @@ console.log(player);
 
 // Place the player object in a variable called player
 
+var player = new Player();
+
+//player.render();
+
+console.log(player);
 
 
 // This listens for key presses and sends the keys to your
@@ -134,5 +139,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+   player.handleInput(allowedKeys[e.keyCode]);
  }); 
