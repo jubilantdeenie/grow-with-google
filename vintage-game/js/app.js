@@ -1,3 +1,4 @@
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -6,9 +7,9 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-	this.x = 5;
-	this.y = 55;
-	this.speed = 0;
+	this.x;
+	this.y;
+	this.speed;
 	
 	
 };
@@ -20,7 +21,15 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	
+	if (this.x > 400 || this.x < 0) {
+			this.speed = (0 - this.speed);
+	}
+	
+	
+	
+	
 	this.x += this.speed;
+	//this.x -= this.speed;
 	//console.log(this.speed);
 	//console.log(this.x);
 	
@@ -51,18 +60,15 @@ var Player = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-princess-girl.png';
-	this.x = 100;
-	this.y = 100;
-	this.speed = 1;
-	
+	this.x = 200;
+	this.y = 430;
+	this.speed = 0;
 	
 };
 
 // Update the player's position, required method for game
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-
-	
 	
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -72,7 +78,8 @@ Player.prototype.update = function(dt) {
 // Draw the player on the screen, required method for game
 Player.prototype.render = function() {
 	console.log(this.sprite);
-    //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+	
 };
 
 
@@ -88,36 +95,30 @@ var enemy;
 
 for (i = 0; i < 10; i++){
 	enemy = new Enemy();
-	
+	enemy.x = 5;
 	//enemy.y = 60;
 	
 	if (i <= 3){
 		enemy.y = 60;
+		enemy.speed = 7;
 	}
 	else if (i <= 6){
 		enemy.y = 140;
+		enemy.speed = 5;
 	}
 	else {
 		enemy.y = 225;
+		enemy.speed = 3;
+	}
+	
+	if (i % 2){
+		enemy.x = 400
 	}
 	
 	allEnemies.push(enemy);
 }
 
 //console.log(allEnemies);
-
-
-// Place all enemy objects in an array called allEnemies
-
-//enemyArray = [{}, {}, {}, {'x':0, 'y':0 }];
-
-//let Enemy = {
-//	x = 5
-//	y = 1};
-
-// for i <   enemyArray  for in
-//    enemy.Render()
-// 
 
 
 // Place the player object in a variable called player
