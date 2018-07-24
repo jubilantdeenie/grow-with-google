@@ -24,9 +24,15 @@ Enemy.prototype.update = function(dt) {
 	if (this.x > 400 || this.x < 0) {
 			this.speed = (0 - this.speed);
 	}
+			/*this.speed = 100 + Math.floor(Math.random() * 222);
 	
 	
-	
+	if (player.x < this.x + 80 &&
+		player.x + 80 > this.x &&
+		player.y < this.y + 60 &&
+		60 + player.y > this.y) {
+		player.x = 202;
+		player.y = 405; */
 	
 	this.x += this.speed;
 	//this.x -= this.speed;
@@ -61,7 +67,7 @@ var Player = function() {
     // a helper we've provided to easily load images
     this.sprite = 'images/char-princess-girl.png';
 	this.x = 200;
-	this.y = 430;
+	this.y = 400;
 	this.speed = 0;
 	
 };
@@ -73,6 +79,32 @@ Player.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+	
+	for (i = 0; i < allEnemies.length; i++) {
+		if (Math.abs(player.x - allEnemies[i].x) <= 25 &&
+			Math.abs(player.y - allEnemies[i].y) <= 25)  {
+			player.x = 200;
+			player.y = 400;
+		}
+	} 
+	
+	if (player.y <= 10) {
+		document.getElementById('myModal').style.display = 'block';
+	
+		console.log('winner');
+		
+		// Get the <span> element that closes the modal
+		let span = document.getElementsByClassName("close")[0];
+
+
+	//	When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+		}
+	}
+} 
+	
 };
 
 // Draw the player on the screen, required method for game
@@ -82,8 +114,25 @@ Player.prototype.render = function() {
 	
 };
 
+Player.prototype.handleInput = function(playerInput) {
+	
+	 if (playerInput == 'left' && this.x > 0) {
+        this.x -= 5;
+    }
 
+    if (playerInput == 'right' && this.x < 405) {
+        this.x += 5;
+    }
 
+    if (playerInput == 'up' && this.y > 0) {
+        this.y -= 5;
+    }
+
+    if (playerInput == 'down' && this.y < 405) {
+        this.y += 5;
+    }
+
+};
 
 
 
@@ -100,11 +149,11 @@ for (i = 0; i < 10; i++){
 	
 	if (i <= 3){
 		enemy.y = 60;
-		enemy.speed = 7;
+		enemy.speed = 3;
 	}
 	else if (i <= 6){
 		enemy.y = 140;
-		enemy.speed = 5;
+		enemy.speed = 3;
 	}
 	else {
 		enemy.y = 225;
@@ -125,14 +174,12 @@ for (i = 0; i < 10; i++){
 
 var player = new Player();
 
-//player.render();
 
-console.log(player);
 
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -141,4 +188,24 @@ document.addEventListener('keyup', function(e) {
     };
 
    player.handleInput(allowedKeys[e.keyCode]);
+   
  }); 
+
+ // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+//var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+/*span.onclick = function() {
+    modal.style.display = "none";
+}*/
+
+// When the user clicks anywhere outside of the modal, close it
+//window.onclick = function(event) {
+  //  if (event.target == modal) {
+    //    modal.style.display = "none";
+    //}
+//} 
