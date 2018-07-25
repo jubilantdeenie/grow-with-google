@@ -1,4 +1,11 @@
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+
+}
+ 
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -21,23 +28,40 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	
-	if (this.x > 400 || this.x < 0) {
-			this.speed = (0 - this.speed);
+	
+	
+	if (this.x > 550 || this.x < -150) { 
+
+			//newSpeed = getRandomIntInclusive(2, 8);
+			
+			if(this.speed < 0){
+				this.speed = getRandomIntInclusive(2, 8);
+			}
+			else{
+				this.speed = getRandomIntInclusive(-2, -8);
+			}
+			
+			
+		
+	
+			//this.speed = (0 - this.speed);
+			
+			
+			
+			//this.speed = this.speed * -1;
+			//vary speed on return
+			
+	
+		if (this.speed > 0) {
+			this.sprite = 'images/enemy-bug.png';
+		} else {
+			this.sprite = 'images/enemy-bug2.png';
+		}  
+													
 	}
-			/*this.speed = 100 + Math.floor(Math.random() * 222);
 	
-	
-	if (player.x < this.x + 80 &&
-		player.x + 80 > this.x &&
-		player.y < this.y + 60 &&
-		60 + player.y > this.y) {
-		player.x = 202;
-		player.y = 405; */
 	
 	this.x += this.speed;
-	//this.x -= this.speed;
-	//console.log(this.speed);
-	//console.log(this.x);
 	
 	
 };
@@ -89,27 +113,29 @@ Player.prototype.update = function(dt) {
 	} 
 	
 	if (player.y <= 10) {
-		document.getElementById('myModal').style.display = 'block';
-	
-		console.log('winner');
 		
-		// Get the <span> element that closes the modal
-		let span = document.getElementsByClassName("close")[0];
+		let modal = document.getElementById('myModal');
+		modal.style.display = 'block';
+		
+		let span = document.getElementById('close');
+		
 
+		console.log(span);
+		console.log(modal);
 
-	//	When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
+		//	When the user clicks anywhere outside of the modal, close it
+		span.onclick = function(event) {
+			modal.style.display = 'none';
 		}
+		
+		player.y = 400;
+	
 	}
-} 
 	
 };
 
 // Draw the player on the screen, required method for game
 Player.prototype.render = function() {
-	console.log(this.sprite);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	
 };
@@ -142,27 +168,29 @@ let allEnemies = [];
 
 var enemy;
 
+// x = -? off canvas  or > canvasR
+// speed  > randomness    
+
 for (i = 0; i < 10; i++){
 	enemy = new Enemy();
-	enemy.x = 5;
-	//enemy.y = 60;
+	enemy.x = -150;
+	enemy.speed = getRandomIntInclusive(2, 7);
 	
 	if (i <= 3){
 		enemy.y = 60;
-		enemy.speed = 3;
 	}
 	else if (i <= 6){
 		enemy.y = 140;
-		enemy.speed = 3;
 	}
 	else {
 		enemy.y = 225;
-		enemy.speed = 3;
 	}
 	
 	if (i % 2){
-		enemy.x = 400
+		enemy.x = 550;
+		enemy.sprite = 'images/enemy-bug2.png';
 	}
+
 	
 	allEnemies.push(enemy);
 }
@@ -190,9 +218,22 @@ document.addEventListener('keydown', function(e) {
    player.handleInput(allowedKeys[e.keyCode]);
    
  }); 
+ 
+ 
+
+ 
+ 
+ 
+ 
+		
+ 
+ 
+ 
+ 
+ 
 
  // Get the modal
-var modal = document.getElementById('myModal');
+//var modal = document.getElementById('myModal');
 
 // Get the <span> element that closes the modal
 //var span = document.getElementsByClassName("close")[0];
