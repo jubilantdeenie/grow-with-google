@@ -23,7 +23,7 @@ Use the up, down, left, and right arrow keys to direct your player to the water.
  
 Modal window by W3. Direct link in app.js comments.
 
-The enemy-bug image was been modified using Gimp to create enemy-bug2. 
+The enemy-bug image has been modified using Gimp to create enemy-bug2. 
 
 ## Future Developments
 
