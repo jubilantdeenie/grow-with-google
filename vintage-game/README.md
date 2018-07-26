@@ -21,7 +21,7 @@ Use the up, down, left, and right arrow keys to direct your player to the water.
  
 ## Attributions
  
-Modal window by W3. Direct link in app.js comments.
+Modal window by W3 and handleInput function by letsboot. Direct link in app.js comments.
 
 The enemy-bug image has been modified using Gimp to create enemy-bug2. 
 

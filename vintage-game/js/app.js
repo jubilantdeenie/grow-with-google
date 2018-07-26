@@ -105,7 +105,7 @@ Player.prototype.render = function() {
 
 
 //Move player
-
+// handleInput method source attribution https://medium.com/letsboot/classic-arcade-game-with-js-5687e4125169
 Player.prototype.handleInput = function(playerInput) {
 	
 	 if (playerInput == 'left' && this.x > 0) {
