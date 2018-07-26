@@ -13,7 +13,7 @@ frontend-nanodegree-arcade-game
 
 ## About 
  
-This project was made as part of Udacity coursework for Exploring Javascript Tools. JavaScript functionality and a modal window have been added to the original content provided.
+This project was made as part of Udacity coursework for Exploring Javascript Tools. JavaScript functionality, updated graphics and a modal window have been added to the original content provided.
  
 ## Instructions
 
@@ -22,6 +22,8 @@ Use the up, down, left, and right arrow keys to direct your player to the water.
 ## Attributions
  
 Modal window by W3. Direct link in app.js comments.
+
+The enemy-bug image was been modified using Gimp to create enemy-bug2. 
 
 ## Future Developments
 
