@@ -84,7 +84,7 @@ Player.prototype.update = function(dt) {
 	//Winning conditions
 	if (player.y <= 10) {
 		
-		//Winner modal pop-up
+		//Winner modal pop-up by W3. https://www.w3schools.com/howto/howto_css_modals.asp
 		let modal = document.getElementById('myModal');
 		modal.style.display = 'block';
 					
