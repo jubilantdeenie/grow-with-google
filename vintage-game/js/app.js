@@ -1,18 +1,14 @@
+// Randomize enemies.
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
 
 }
  
 // Enemies our player must avoid
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 	this.x;
 	this.y;
@@ -28,11 +24,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	
-	
-	
 	if (this.x > 550 || this.x < -150) { 
-
-			//newSpeed = getRandomIntInclusive(2, 8);
 			
 			if(this.speed < 0){
 				this.speed = getRandomIntInclusive(2, 8);
@@ -41,60 +33,35 @@ Enemy.prototype.update = function(dt) {
 				this.speed = getRandomIntInclusive(-2, -8);
 			}
 			
-			
-		
-	
-			//this.speed = (0 - this.speed);
-			
-			
-			
-			//this.speed = this.speed * -1;
-			//vary speed on return
-			
 	
 		if (this.speed > 0) {
 			this.sprite = 'images/enemy-bug.png';
 		} else {
 			this.sprite = 'images/enemy-bug2.png';
 		}  
-													
+	
 	}
-	
-	
+		
 	this.x += this.speed;
-	
-	
+		
 };
 
 
-
-
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 
-
-
-
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
 var Player = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+	
     this.sprite = 'images/char-princess-girl.png';
 	this.x = 200;
 	this.y = 400;
 	this.speed = 0;
 	
 };
+
 
 // Update the player's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -105,23 +72,24 @@ Player.prototype.update = function(dt) {
     // all computers.
 	
 	for (i = 0; i < allEnemies.length; i++) {
+		
 		if (Math.abs(player.x - allEnemies[i].x) <= 25 &&
 			Math.abs(player.y - allEnemies[i].y) <= 25)  {
 			player.x = 200;
 			player.y = 400;
 		}
+		
 	} 
 	
+	//Winning conditions
 	if (player.y <= 10) {
 		
+		//Winner modal pop-up
 		let modal = document.getElementById('myModal');
 		modal.style.display = 'block';
-		
+					
 		let span = document.getElementById('close');
-		
-
-		console.log(span);
-		console.log(modal);
+	
 
 		//	When the user clicks anywhere outside of the modal, close it
 		span.onclick = function(event) {
@@ -134,11 +102,15 @@ Player.prototype.update = function(dt) {
 	
 };
 
-// Draw the player on the screen, required method for game
+
+// Draw the player on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	
 };
+
+
+//Move player
 
 Player.prototype.handleInput = function(playerInput) {
 	
@@ -161,16 +133,11 @@ Player.prototype.handleInput = function(playerInput) {
 };
 
 
-
-// Now instantiate your objects.
-
+// Instantiate enemies
 let allEnemies = [];
 
 var enemy;
-
-// x = -? off canvas  or > canvasR
-// speed  > randomness    
-
+   
 for (i = 0; i < 10; i++){
 	enemy = new Enemy();
 	enemy.x = -150;
@@ -190,23 +157,16 @@ for (i = 0; i < 10; i++){
 		enemy.x = 550;
 		enemy.sprite = 'images/enemy-bug2.png';
 	}
-
 	
 	allEnemies.push(enemy);
 }
 
-//console.log(allEnemies);
 
-
-// Place the player object in a variable called player
-
+// Instantiate player 
 var player = new Player();
 
 
-
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Keypress listener 
 document.addEventListener('keydown', function(e) {
     var allowedKeys = {
         37: 'left',
@@ -218,35 +178,3 @@ document.addEventListener('keydown', function(e) {
    player.handleInput(allowedKeys[e.keyCode]);
    
  }); 
- 
- 
-
- 
- 
- 
- 
-		
- 
- 
- 
- 
- 
-
- // Get the modal
-//var modal = document.getElementById('myModal');
-
-// Get the <span> element that closes the modal
-//var span = document.getElementsByClassName("close")[0];
-
-
-// When the user clicks on <span> (x), close the modal
-/*span.onclick = function() {
-    modal.style.display = "none";
-}*/
-
-// When the user clicks anywhere outside of the modal, close it
-//window.onclick = function(event) {
-  //  if (event.target == modal) {
-    //    modal.style.display = "none";
-    //}
-//} 
