@@ -1,7 +1,27 @@
+//cat object
+//array cat collection name, clicks, url(image)
 
 
+/* var Enemy = function() {
+    this.sprite = 'images/enemy-bug.png';
+  this.x;
+  this.y;
+  this.speed;
+  
+  
+};
 
+*/
 
+const cats = [
+  {'name': 'Raul' , 'image': 'img/cute-blue.jpg', 'pets':0},
+  {'name': 'Moxie' , 'image': 'img/dark-diva.jpg', 'pets':0},
+  {'name': 'Tobias' , 'image': 'img/siamese.jpg', 'pets':0},
+  {'name': 'Hamlet' , 'image': 'img/persian.jpg', 'pets':0},
+  {'name': 'Ingrid' , 'image': 'img/tiny-calico.jpg', 'pets':0},
+  {'name': 'Angelica' , 'image': 'img/serious-tabby.jpg', 'pets':0},
+  {'name': 'Dolce' , 'image': 'img/fawn-kitten', 'pets':0},
+];
 
 
 
