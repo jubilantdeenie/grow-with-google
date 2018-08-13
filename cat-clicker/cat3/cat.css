@@ -1,11 +1,10 @@
 body {
 	background: #144182;
-}
-
-h1, h2 {
 	text-align: center;
     color: #88afdd;
+    font-size: 22px;
 }
+
 
 #image {
 	height: 50%;
