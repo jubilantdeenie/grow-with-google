@@ -13,6 +13,13 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
+        it('url defined', function() {
+            for(let feed of allFeeds) {
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
+            }
+        });
+
     });
 
 
@@ -20,7 +27,6 @@ $(function() {
 
    describe("The menu", function() {
     let body = $('body');
-    let callback = jasmine.createSpy('body','toggleClass');
 
         /* This test ensures the menu element is
          * hidden by default. 
@@ -28,21 +34,48 @@ $(function() {
 
          it('is hidden by default', function() {
             expect(body.hasClass('menu-hidden')).toBe(true);
-            expect(callback).not.toHaveBeenCalled();
             });
 
+
+
+ it('is visible when the icon is clicked', function() {
+
+           // let clicked = $('click');
+            let menu = $('icon-list');
+            //let link = $('.menu-icon-link');
+
+            let callback = jasmine.createSpy('menu','.menu-icon-link');
+
+            if($(menu).click()) {
+                expect(callback).toHaveBeenCalled();
+            }
+
+            // $(selector).click()
+            //let callback = jasmine.createSpy('menu','.menu-icon-link');
+
+ });
 
          /* This test ensures the menu changes
           * visibility when the menu icon is clicked. 
           */
 
-          it('is visible when the icon is clicked', function() {
+          /* it('is visible when the icon is clicked', function() {
             if(callback.calls.count() % 2 === 0) {
                 expect(body.hasClass('menu-hidden')).toBe(true);
             }else{
                 expect(body.hasClass('menu-hidden')).toBe(false);
             }
-        });
+        }); */
+
+        /*   it('is visible when the icon is clicked', function() {
+           
+            let clicked = $('click');
+            let menu = $('icon-list');
+            let link = $('.menu-icon-link');
+
+            if (menu.clicked){
+                expect(link).toHaveBeenCalled(true);   
+        };*/
     });
 
    
@@ -102,4 +135,26 @@ describe('Initial Entries', function() {
    link: https://matthewcranford.com/feed-reader-walkthrough-part-2-writing-the-first-tests/
    link: https://matthewcranford.com/feed-reader-walkthrough-part-3-menu-test-suite/
    link: https://matthewcranford.com/feed-reader-walkthrough-part-4-async-tests/
+
+
+ 'toBe',
+      'toBeCloseTo',
+      'toBeDefined',
+      'toBeFalsy',
+      'toBeGreaterThan',
+      'toBeLessThan',
+      'toBeNaN',
+      'toBeNull',
+      'toBeTruthy',
+      'toBeUndefined',
+      'toContain',
+      'toEqual',
+      'toHaveBeenCalled',
+      'toHaveBeenCalledWith',
+      'toMatch',
+      'toThrow',
+      'toThrowError'
+
+
+
    */
