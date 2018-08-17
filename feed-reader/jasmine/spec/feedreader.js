@@ -19,111 +19,121 @@ $(function() {
                 expect(feed.url.length).not.toBe(0);
             }
         });
-
-    });
+   });
 
 
     /* New test suite "The menu" */
-
    describe("The menu", function() {
-    let body = $('body');
+        let body = $('body');
 
         /* This test ensures the menu element is
-         * hidden by default. 
-         */
+         * hidden by default.*/
 
          it('is hidden by default', function() {
-            expect(body.hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
             });
 
-
-
- it('is visible when the icon is clicked', function() {
-
-           // let clicked = $('click');
-            let menu = $('icon-list');
-            //let link = $('.menu-icon-link');
-
-            let callback = jasmine.createSpy('menu','.menu-icon-link');
-
-            if($(menu).click()) {
-                expect(callback).toHaveBeenCalled();
-            }
-
-            // $(selector).click()
-            //let callback = jasmine.createSpy('menu','.menu-icon-link');
-
- });
-
-         /* This test ensures the menu changes
-          * visibility when the menu icon is clicked. 
-          */
-
-          /* it('is visible when the icon is clicked', function() {
-            if(callback.calls.count() % 2 === 0) {
-                expect(body.hasClass('menu-hidden')).toBe(true);
-            }else{
-                expect(body.hasClass('menu-hidden')).toBe(false);
-            }
-        }); */
-
-        /*   it('is visible when the icon is clicked', function() {
-           
-            let clicked = $('click');
-            let menu = $('icon-list');
-            let link = $('.menu-icon-link');
-
-            if (menu.clicked){
-                expect(link).toHaveBeenCalled(true);   
-        };*/
+        //double check this is working right
+         it('is visible when the icon is clicked', function() {
+                // First click of menu 
+                $('.menu-icon-link').click();
+                expect($('body').hasClass('menu-hidden')).toBe(false);
+                // Second click of menu
+                $('.menu-icon-link').click();
+                expect($('body').hasClass('menu-hidden')).toBe(true);
+          });
     });
+                               /*// let clicked = $('click');
+                                let menu = $('icon-list');
+                                let link = $('.menu-icon-link');
 
-   
+                                let callback = jasmine.createSpy('menu','.menu-icon-link');
+
+                                if(link.click(callback)) {
+                                    expect(body.hasClass('menu-hidden')).toBe(true);
+                                }
+
+                                // $(selector).click()
+                                //let callback = jasmine.createSpy('menu','.menu-icon-link');
+                  */
 
     /* New test suite "Initial Entries" */
-
-describe('Initial Entries', function() {
+    describe('Initial Entries', function() {
             
-        /* This test ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         */
-
+        /* When the loadFeed function is called and completes its work, there is at least
+         * a single .entry element within the .feed container.*/
          beforeEach(function(done) {
-            loadFeed(0, done);
+            loadFeed(0, function () {
+                done();
             });
+          });
 
-         it('feed is working', function() {
-            const feed = document.querySelector('.feed');
-            expect(feed.children.length > 0).toBe(true); 
-         });
+         it('has at least one entry', function() {
+            let entries = $('.feed .entry');
+            expect(entries.length).toBeGreaterThan(0); 
+            });
+        });
     });
-    /* New test suite "New Feed Selection" */
 
-        describe('New Feed Selection', function() {
-            const feed = document.querySelector('.feed');
-            const feedOne = [];
+    /* New test suite "New Feed Selection" */
+    describe('New Feed Selection', function() {
+
+        beforeEach(function(done){
+            loadFeed(1, function(){
+
+                feedOne = $('.feed').html();   
+           
+            loadFeed(0, function(){
+                feedTwo = $('.feed').html();
+                done();
+            });
+        });
+     });
+
+        it('changes content', function() {
+            expect(feedOne).not.toBe(feedTwo);
+        });
+      //});
+  // });
+}());
+
+ /*           const feed = $('.feed');
+            const feedOne = $('.feed').html();
+            //feedOne = feed.html();
 
             
         /* This test ensures when a new feed is loaded
          * by the loadFeed function the content changes.
          */
 
-            beforeEach(function(done) {
+  /*          beforeEach(function(done) {
             loadFeed(0);
             Array.from(feed.children).forEach(function(entry) {
                 feedOne.push(entry.innerText);
                 });
             loadFeed(1, done); 
             }); 
-       
-           it('changes content', function() {
-              Array.from(feed.children).forEach(function(entry,index) {
-                expect(entry.innerText === feedOne[index]).toBe(false);
-            });
-        });
+*/
+
+
+
+            /* beforeEach(function(done){
+        loadFeed(0, function(){
+        // set the value of feedOne here
+        loadFeed(1, done); // This is inside the first loadFeed's callback because we only want to fetch the next set of feeds when the first one is done loading.
     });
-}());
+});*/
+
+
+
+
+       
+      //     it('changes content', function() {
+      //        Array.from(feed.children).forEach(function(entry,index) {
+    //        expect(entry.innerText === feedOne[index]).toBe(false);
+      //      });
+    // });
+
 
 /*
    The following sources have been referenced in the completion of this project.
