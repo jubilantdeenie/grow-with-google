@@ -34,7 +34,7 @@ $(function() {
                 // First click of menu 
                 $('.menu-icon-link').click();
                 expect($('body').hasClass('menu-hidden')).toBe(false);
-                // Second click of menu
+                 //Second click of menu
                 $('.menu-icon-link').click();
                 expect($('body').hasClass('menu-hidden')).toBe(true);
         });
@@ -60,10 +60,12 @@ $(function() {
 
     /* New test suite "New Feed Selection" */
     describe('New Feed Selection', function() {
-
+        let feedOne = $('.feed').html();  
+        let feedTwo = $('.feed').html();
+        
         beforeEach(function(done){
             loadFeed(0, function(){
-                let feedOne = $('.feed').html();   
+                feedOne = $('.feed').html();   
            });
 
             loadFeed(1, function(){
@@ -71,7 +73,6 @@ $(function() {
                 done();
             });
         });
-     //});
 
         it('changes content', function() {
             expect(feedOne).not.toBe(feedTwo);
