@@ -5,45 +5,47 @@ frontend-nanodegree-feed-reader
  
 
  [Project Overview](#about)
- [How to run the Feed Reader](#instructions)
+ [Feed Reader Quick Start](#instructions)
  [Overview of Tests](#tests)
  [Attributions](#attributions)
  
 
- 
-
-
-
-
 ## Project Overview
 
-This project is part of Udacity's "Exploring JS- Objects, Tools and Testing" coursework for the Front End Developer Nanodegree. It is made using Jasmine to create test-driven code in JavaScript. Starter materials have been provided by Udacity. The feedreader.js file has been modified to execute the assignment. 
+This project is part of Udacity's "Exploring JS- Objects, Tools and Testing" coursework for the Front End Developer Nanodegree. 
+
+It is made using Jasmine to create test-driven code in JavaScript. Starter materials have been provided by Udacity. 
+
+Tests are performed in feedreader.js to complete the assignment.   
 
 
-### How to run the Feed Reader
+### Feed Reader Quick Start
+
+This project may be cloned or downloaded from the git repository. 
 
 Open index.html in your browser to start the app. 
 
-Tests are written in feedreader.js.
+Tests are written in feedreader.js, located in the Jasmine spec folder. Find tests diplayed at the bottom of the html page when viewed in the browser.
 
-red/green pass fail written at bottom
+Passing tests are shown in green. A failing test will display in red. 
 
 
 #### Overview of Tests 
 
-1. Tests the allFeeds variable is defined and loading.
-2. Tests the url's are loading.
+1. Loops through each feed in the allFeeds object and test that it is defined.
+
+2. Confirms that the url's are loading.
+
 3. Tests the menu is hidden by default.
-4. Tests the menu is visible when clicked.
-5. Tests that there is an entry in the feed.
-6. Tests that loadFeed() changes content. 
-7.
 
-##### Resouces
+4. Ensures the menu is visible when clicked.
 
-Jasmine link 
+5. Tests that there is an initial entry in the feed.
 
-###### Attributions 
+6. Affirms that loadFeed() is changing content. 
+
+
+##### Attributions 
 
 Special thanks to Ryan Boris for creating his youTube video "P4 Walkthrough: Feed Reader Jasmine Unit Tests" and to Matthew Cranford for his "Feed Reader Walkthrough Series 2-4". And to Alain Cadenat for is walkthrough video. These materials have been referenced in the completion of this project. Direct links found in feedreader.js. 
 
