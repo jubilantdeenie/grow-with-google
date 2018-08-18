@@ -95,24 +95,4 @@ $(function() {
    Alain Cadenat
    link: https://www.youtube.com/watch?v=pPt4oOKNdEk
 
- 'toBe',
-      'toBeCloseTo',
-      'toBeDefined',
-      'toBeFalsy',
-      'toBeGreaterThan',
-      'toBeLessThan',
-      'toBeNaN',
-      'toBeNull',
-      'toBeTruthy',
-      'toBeUndefined',
-      'toContain',
-      'toEqual',
-      'toHaveBeenCalled',
-      'toHaveBeenCalledWith',
-      'toMatch',
-      'toThrow',
-      'toThrowError'
-
-
-
    */
