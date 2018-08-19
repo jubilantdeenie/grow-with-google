@@ -25,7 +25,7 @@ This project may be cloned or downloaded from the git repository.
 
 Open index.html in your browser to start the app. 
 
-Tests are written in feedreader.js, located in the Jasmine spec folder. Find tests diplayed at the bottom of the html page when viewed in the browser.
+Tests are written in feedreader.js, located in the Jasmine spec folder. Find tests displayed at the bottom of the html page when viewed in the browser.
 
 Passing tests are shown in green. A failing test will display in red. 
 
@@ -36,13 +36,15 @@ Passing tests are shown in green. A failing test will display in red.
 
 2. Confirms that the url's are loading.
 
-3. Tests the menu is hidden by default.
+3. Ensures each feed has a named defined and is not empty.
 
-4. Ensures the menu is visible when clicked.
+4. Tests the menu is hidden by default.
 
-5. Tests that there is an initial entry in the feed.
+5. Ensures the menu is visible when clicked.
 
-6. Affirms that loadFeed() is changing content. 
+6. Tests that there is an initial entry in the feed.
+
+7. Affirms that loadFeed() is changing content. 
 
 
 ##### Attributions 

@@ -1,36 +1,43 @@
 $(function() {
    
-    describe('RSS Feeds', function() {
+    describe('RSS Feeds', () => {
 
         /* This test loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
 
-        it('are defined', function() {
+        it('are defined', () => {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
-        it('url defined', function() {
+        it('have a URL', () => {
             for(let feed of allFeeds) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
+            }
+        });
+
+        it('have a name', () => {
+            for(let feed of allFeeds) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
             }
         });
    });
 
 
     /* New test suite "The menu" */
-   describe("The menu", function() {
+   describe("The menu", () => {
         /* This test ensures the menu element is
-         * hidden by default.*/
+         * hidden by default and visible when clicked.*/
 
-        it('is hidden by default', function() {
+        it('is hidden by default', () => {
             expect($('body').hasClass('menu-hidden')).toBe(true);
             });
 
-        it('is visible when the icon is clicked', function() {
+        it('is visible when the icon is clicked', () => {
                 // First click of menu 
                 $('.menu-icon-link').click();
                 expect($('body').hasClass('menu-hidden')).toBe(false);
@@ -41,7 +48,7 @@ $(function() {
     });
 
     /* New test suite "Initial Entries" */
-    describe('Initial Entries', function() {
+    describe('Initial Entries', () => {
             
         /* When the loadFeed function is called and completes its work, there is at least
          * a single .entry element within the .feed container.*/
@@ -51,7 +58,7 @@ $(function() {
             });
         });
 
-        it('has at least one entry', function() {
+        it('has at least one entry', () => {
             let entries = $('.feed .entry');
             expect(entries.length).toBeGreaterThan(0); 
         });
@@ -59,22 +66,21 @@ $(function() {
     });
 
     /* New test suite "New Feed Selection" */
-    describe('New Feed Selection', function() {
-        let feedOne = $('.feed').html();  
-        let feedTwo = $('.feed').html();
+    describe('New Feed Selection', () => {
+        //Tests that there is an initial entry in the feed and the content changes.
         
-        beforeEach(function(done){
+        beforeEach((done) =>{
             loadFeed(0, function(){
-                feedOne = $('.feed').html();   
-           });
+                feedOne = $('.feed').html();  
 
-            loadFeed(1, function(){
-                let feedTwo = $('.feed').html();
-                done();
+                loadFeed(1, function(){
+                    feedTwo = $('.feed').html();
+                    done();
+                });
             });
         });
 
-        it('changes content', function() {
+        it('changes content', () => {
             expect(feedOne).not.toBe(feedTwo);
         });
     });
