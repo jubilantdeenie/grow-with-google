@@ -1,7 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-
-body,td,th,p{
+ body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10pt;
 	color: #333;
@@ -54,8 +53,6 @@ nav {
   height: 80px;
   background-color: #252831;
   text-align:center;
-  display: flex;
-  justify-content: center;
 }
 nav h1 {
   margin: auto;
@@ -75,26 +72,22 @@ nav h1 a {
     margin: 0;
     width: calc(50% - 80px);
 }
-
-/* Display list items side by side */
+ /* Display list items side by side */
 #breadcrumb li {
     display: inline;
 }
-
-/* Add a slash symbol (/) before/behind each list item */
+ /* Add a slash symbol (/) before/behind each list item */
 #breadcrumb li+li:before {
     padding: 8px;
     color: black;
     content: "/\00a0";
 }
-
-/* Add a color to all links inside the list */
+ /* Add a color to all links inside the list */
 #breadcrumb li a {
     color: #0275d8;
     text-decoration: none;
 }
-
-/* Add a color on mouse-over */
+ /* Add a color on mouse-over */
 #breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
@@ -111,9 +104,6 @@ nav h1 a {
   height: 50px;
   background-color: #3397DB;
   align-items: center;
-  /*display: flex;
-  flex-direction: row;
-  justify-content: center;*/
 }
 .filter-options h2 {
   color: white;
@@ -133,12 +123,11 @@ nav h1 a {
   padding: 0 10px;
   width: 200px;
 }
-
-/* ====================== Restaurant Listing ====================== */
+ /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
-  margin: 0 auto;
+  margin: 0;
   padding: 30px 15px 60px;
   text-align: center;
   display: flex;
@@ -146,6 +135,7 @@ nav h1 a {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
@@ -154,8 +144,7 @@ nav h1 a {
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  /*width: 270px;*/
-  width: 100%;
+  width: 270px;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -191,8 +180,7 @@ nav h1 a {
   text-decoration: none;
   text-transform: uppercase;
 }
-
-/* ====================== Restaurant Details ====================== */
+ /* ====================== Restaurant Details ====================== */
 .inside header {
   position: fixed;
   top: 0;
@@ -283,24 +271,3 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
-
-/*@media screen and (max-width: 249px) {
-  #restaurants-list li {
-    width: 100%;
-  }
- } */
-
-/*@media screen and (min-width: 350px) {
-  #restaurants-list li {
-    width: 100%;
-    display: grid;
-    -template-columns: repeat(2, 1fr);
-  }
- }*/
-
-/* @media screen and (min-width: 500px) {
-  #restaurants-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
- }*/
