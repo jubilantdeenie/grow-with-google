@@ -284,7 +284,7 @@ nav h1 a {
  #reviews-list li p:nth-child(3) {
   width: 50%;
   align-self: center;
-  text-align: right;
+  text-align: center;
  }
  #reviews-list li p:nth-child(4) {
   width: 100%;
@@ -297,7 +297,7 @@ nav h1 a {
 
 /*  Media Queries  */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 650px) {
   .inside {
     display: flex;
     flex-direction: row;
@@ -321,21 +321,6 @@ nav h1 a {
    padding-left: 0;
    text-align: center;
  }
- .inside #map-container {
-   orfer: 2;
-   top: 125px;
-   position: relative;
-   width: 100vw;
-   height: 100vw;
- }
- .inside #restaurant-container {
-   order: 3;
-   position: relavtive;
-   width: 100vw;
-   padding: 140px 5px 0 0;
-   text-align: center;
-   margin: auto;
- }
  .inside #restaurant-container {
    order: 3;
    position: relative;
@@ -344,10 +329,20 @@ nav h1 a {
    text-align: center;
    margin: auto;
  }
-.inside #reviews-container {
+ .inside #reviews-container {
   width: 100vw;
   padding: 5px;
   margin: auto;
+}
+#reviews-list {
+  width: 100%;
+}
+.inside #map-container {
+  order: 2;
+  top: 125px;
+  position: relative;
+  width: 100vw;
+  height: 100vw;
 }
 .inside #footer {
   order: 4;
@@ -356,4 +351,10 @@ nav h1 a {
   padding-left: 0;
   padding-right: 0;
 }
+#reviews-container h2 {
+  text-align: center;
+}
+/*nav h1 a {
+  font-size: 20px;
+}/
 }
