@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <!-- Normalize.css for better cross-browser consistency -->
@@ -12,13 +12,13 @@
 
 <body class="inside">
   <!-- Beginning header -->
-  <header>
+  <header tabIndex="0">
     <!-- Beginning nav -->
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
+    <ul id="breadcrumb"tabIndex="0"> 
       <li><a href="/">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
@@ -27,9 +27,9 @@
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" tabIndex="0">
     <!-- Beginning map -->
-    <section id="map-container">
+    <section id="map-container" aria-role= "map area">
       <div id="map"></div>
     </section>
     <!-- End map -->
