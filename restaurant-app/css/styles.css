@@ -62,7 +62,22 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   text-align: center;
   text-transform: uppercase;
 }
-
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  background: #cdf2d3;
+  color: fff;
+  font-size: 20px;
+  padding: 8;
+  z-index:100;
+  border-radius: 12px;
+  padding: 5px;
+  margin-top: 8px;
+}
+.skip-link:focus {
+  top: 0;
+}
 /* ====================== Navigation ====================== */
 nav {
   width: 100%;
@@ -254,6 +269,8 @@ nav h1 a {
 }
 #restaurant-address {
   font-size: 18pt;
+  text-align: center;
+  padding-right: 60px;
   margin: 10px 0px;
   color: #197477;
 }
@@ -330,6 +347,8 @@ nav h1 a {
 
 #restaurant-hours td {
   color: #197477;
+  padding-left: 40px;
+  font-size: 16px;
 }
 
 /*  Media Queries  */
@@ -362,7 +381,7 @@ nav h1 a {
    order: 3;
    position: relative;
    width: 100vw;
-   padding: 140px 5px 0 0;
+   padding: 100px 5px 0 0;
    text-align: center;
    margin: auto;
  }
