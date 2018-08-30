@@ -16,7 +16,7 @@ Ally Purple #600060
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 18pt;
 	color: #333;
-	line-height: 1.5;
+  line-height: 1.5;
 }
 body {
 	background-color:  #197477;
@@ -90,7 +90,7 @@ nav h1 {
 }
 nav h1 a {
   color: #cdf2d3;
-  font-size: 24pt;
+  font-size: 16pt;
   font-weight: 400;
   letter-spacing: 10px;
   text-transform: uppercase;
@@ -162,7 +162,7 @@ nav h1 a {
   border-radius: 4px;
 }
  /* ====================== Restaurant Listing ====================== */
-#restaurants-list {
+ #restaurants-list {
   background-color: #cdf2d3;
   list-style: outside none none;
   margin: 0;
@@ -248,9 +248,6 @@ nav h1 a {
   position: absolute;
   width: 100%;
 }
-/*#footer {
-  color: #050709;
-}*/
 #footer strong {
   color: #cdf2d3;
 }
@@ -305,6 +302,10 @@ nav h1 a {
   letter-spacing: -1px;
   padding-bottom: 1pt;
 }
+#restaurant-hours {
+  margin-left: -28px;
+  margin-right: 10px;
+}
 #reviews-list {
   margin: 0;
   padding: 0;
@@ -353,7 +354,19 @@ nav h1 a {
 
 /*  Media Queries  */
 
-@media only screen and (max-width: 650px) {
+@media screen and (max-width: 450px) {
+  nav h1 a {
+    font-size: 12px;  
+  }
+    }
+
+@media screen and (min-width: 650px) {
+  nav h1 a {
+  font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 650px) {
   .inside {
     display: flex;
     flex-direction: row;
@@ -377,12 +390,20 @@ nav h1 a {
    padding-left: 0;
    text-align: center;
  }
+ #maincontent {
+    padding: 12px;
+  }
+ #restaurant-name {
+  margin: 48px 0 30px;
+ }
+ #restaurant-container {
+   padding: 12px;
+ }
  .inside #restaurant-container {
    order: 3;
    position: relative;
    width: 100vw;
-   padding: 100px 5px 0 0;
-   text-align: center;
+   padding: 100px 5px 0 34px;
    margin: auto;
  }
  .inside #reviews-container {
@@ -408,12 +429,8 @@ nav h1 a {
   padding-right: 0;
 }
 #reviews-container h2 {
-  text-align: center;
+  text-align: left;
+  margin: 48px 0 30px;
 }
-nav h1 a {
-  font-size: 12px;  
- }
 }
-/*nav h1 a {
-  font-size: 20px;
-}*/
+ 
