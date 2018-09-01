@@ -3,6 +3,7 @@ var staticCacheName = 'restaurant-cache';
 let cacheURL = [
     '/',
     '/restaurant.html',
+    '/index.html',
     '/css/styles.css',
     '/data/restaurants.json',
     '/img/1.jpg',
@@ -18,7 +19,6 @@ let cacheURL = [
     '/js/dbhelper.js',
     '/js/restaurant_info.js',
     '/js/main.js',
-
 ];
 
 self.addEventListener('install', function (event) {
