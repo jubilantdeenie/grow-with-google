@@ -39,7 +39,7 @@ self.addEventListener('activate', function (event) {
         caches.keys().then(function (cacheNames) {
             return Promise.all(
                 cacheNames.filter(function (cacheName) {
-                    return cacheName.startWith['restaurant-'] &&
+                    return cacheName.startWith['restaurant'] &&
                         cacheName != staticCacheName;     
                 }).map(function (cacheName) {
                     return caches.delete(cachesName);
