@@ -1,4 +1,4 @@
-import React { Component } from ('react');
+import React, { Component } from 'react';
 
 class MainPage extends Component {
     render() {
@@ -162,12 +162,6 @@ class MainPage extends Component {
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
           </div>
-        )}
-      </div>
-    )
-  }
-}
-
         );
      }
 }
