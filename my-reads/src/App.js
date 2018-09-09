@@ -13,7 +13,7 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books })
+      this.setState({ books: books })
     })
   }
 
@@ -28,7 +28,6 @@ class BooksApp extends React.Component {
 } */
 
   render() {
-    console.log(this.state.books);
     return (
       <div className="app">
       <MainPage 
