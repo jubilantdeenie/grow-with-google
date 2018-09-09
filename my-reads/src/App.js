@@ -15,7 +15,6 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
-    console.log(this.state.books);
   }
 
   /*state = {
@@ -29,11 +28,13 @@ class BooksApp extends React.Component {
 } */
 
   render() {
+    console.log(this.state.books);
     return (
       <div className="app">
-        <SearchPage />
-        <MainPage />
-        </div>
+      <MainPage 
+      books={this.state.books}
+        />     
+      </div>
         /* {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
