@@ -32,10 +32,8 @@ class BooksApp extends React.Component {
 } */
 
   render() {
-    console.log(this.state.book);
     return (
       <div className="app">
-      <SearchPage />
       <MainPage 
       books={this.state.books}
       moveShelf={this.moveShelf}
