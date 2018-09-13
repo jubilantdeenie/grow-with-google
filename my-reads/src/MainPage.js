@@ -4,7 +4,6 @@ import Book from './Book';
 
 class MainPage extends Component {
     render() {
-      console.log(this.props.books)
         return (
             <div className="list-books">
             <div className="list-books-title">
@@ -17,18 +16,17 @@ class MainPage extends Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {
-                        this.props.books
-                        .filter(book => book.shelf === 'currentlyReading')
-                        .map(book => (
-                          <li key={book.id} >
-                           <Book 
-                           book={book}
-                           moveShelf={this.props.moveShelf}
-                           />
-                         </li>        
-                      ))
+                          this.props.books
+                          .filter(book => book.shelf === 'currentlyReading')
+                          .map(book => (
+                            <li key={book.id} >
+                            <Book
+                              book={book}
+                              moveShelf={this.props.moveShelf}
+                               />
+                           </li>
+                          ))
                       }
-                     
                     </ol>
                   </div>
                 </div>
@@ -37,16 +35,16 @@ class MainPage extends Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                     {
-                        this.props.books
-                        .filter(book => book.shelf === 'wantToRead')
-                        .map(book => (
-                          <li key={book.id} >
-                           <Book 
-                           book={book} 
-                           moveShelf={this.props.moveShelf}      
-                           />
-                         </li>        
-                    ))
+                          this.props.books
+                          .filter(book => book.shelf === 'wantToRead')
+                          .map(book => (
+                            <li key={book.id} >
+                            <Book
+                            book={book}
+                            moveShelf={this.props.moveShelf}
+                            />
+                           </li>
+                          ))
                       }
                     </ol>
                   </div>
@@ -56,15 +54,16 @@ class MainPage extends Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                     {
-                        this.props.books
-                        .filter(book => book.shelf === 'read')
-                        .map(book => (
-                          <li key={book.id} >
-                           <Book />
-                           book={book}
-                           moveShelf={this.props.moveShelf}
-                         </li>        
-                    ))
+                          this.props.books
+                          .filter(book => book.shelf === 'read')
+                          .map(book => (
+                            <li key={book.id} >
+                            <Book 
+                             book={book}
+                             moveShelf={this.props.moveShelf}
+                            />
+                           </li>
+                          ))
                       }
                     </ol>
                   </div>
