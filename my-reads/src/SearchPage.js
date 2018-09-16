@@ -23,7 +23,7 @@ class SearchPage extends Component {
         if (searchedBooks.error) {
           this.setState({ searchedBooks: [] });
         } else {
-        this.setState({ searchedBooks });
+        this.setState({ searchedBooks: searchedBooks });
         }
       })
     } else {
@@ -54,7 +54,7 @@ class SearchPage extends Component {
             <div className="search-books-results">
               
               <ol className="books-grid">
-                {
+                { 
                   this.state.searchedBooks.map(searchedBook => {
                   <li key={searchedBook.id}>
                     <Book
