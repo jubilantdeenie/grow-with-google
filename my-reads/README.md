@@ -21,7 +21,6 @@ To get started right away:
 
 ## Attributions 
 
-This project was created consulting the React library. https://reactjs.org/tutorial/tutorial.html
-Many thanks to Maeva NAP for her walk-through video on this assignment. It was consulted in the completion of this project.
+In addition to the Udacity Building With React coursework, this project was created referencing the React library. https://reactjs.org/tutorial/tutorial.html
 
-https://www.youtube.com/watch?v=i6L2jLHV9j8
+Many thanks to Maeva NAP for her excellent walk-through video on this assignment. It was consulted in the completion of this project. https://www.youtube.com/watch?v=i6L2jLHV9j8
