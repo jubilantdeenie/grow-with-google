@@ -10,3 +10,39 @@ JavaScript API
 
    <script async defer
   src="https://maps.googleapis.com/maps/api/js?AIzaSyACxrm7b9GlF8v5fcTtl-VkSxXlM9Y5BcE&v=3.33&callback=initMap"></script>
+
+fourSquare request
+
+GET https://api.foursquare.com/v2/venues/VENUE_ID
+
+userless auth
+
+https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
+
+Googleapis PDX
+
+https://maps.googleapis.com/maps/api/geocode/json?address=PORTLAND,+OR&key=AIzaSyACxrm7b9GlF8v5fcTtl-VkSxXlM9Y5BcE
+
+lat long
+
+ "location" : {
+               "lat" : 45.5122308,
+               "lng" : -122.6587185
+            }
+
+locations array url from foursquare
+
+https://api.foursquare.com/v2/venues/search?ll=45.5122308,-122.6587185
+
+search venues 
+
+https://api.foursquare.com/v2/venues/search?ll=45.5122308,-122.6587185&intent=browse&radius=10000&query=restaurants&client_id=DQRJIJMNVX5GBIN1C4F5FJOREDG2TKEJTF5IXVYJSV41EQTW&client_secret=BZPWNB5SJMCO0XYUFI3WDBC0F5AUP11VCLINDFWJFXPJBMSC&v=20180708
+
+https://api.foursquare.com/v2/venues/search?
+ll=45.5122308,-122.6587185
+&intent=browse
+&radius=10000
+&query=restaurants
+&client_id=DQRJIJMNVX5GBIN1C4F5FJOREDG2TKEJTF5IXVYJSV41EQTW&
+client_secret=BZPWNB5SJMCO0XYUFI3WDBC0F5AUP11VCLINDFWJFXPJBMSC
+&v=20180708
