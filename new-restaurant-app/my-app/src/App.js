@@ -51,7 +51,7 @@ class App extends Component {
     var maker = new window.google.maps.Marker({
       position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
       map: map,
-      title: "Hello world!"
+      title: myVenue.venue.name
     });
 
   })
