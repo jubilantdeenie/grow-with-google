@@ -4,9 +4,12 @@ import './App.css';
 
 class App extends Component {
   
+  state= {
+    venues:[]
+  }
+  
   componentDidMount() {
     this.getVenues()
-    this.loadMap()
   }
   
   loadMap = () => {
@@ -26,7 +29,9 @@ class App extends Component {
 
     axios.get(endPoint + new URLSearchParams(parameters))
      .then(response => {
-       console.log(response.data.response.groups[0].items)
+       this.setState({
+         venues: response.data.response.groups[0].items
+        }, this.loadMap())
      })
      .catch(error => {
        console.log("Error!" + error)
@@ -36,10 +41,22 @@ class App extends Component {
 
   initMap = () => {
     var map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
+      center: {lat: 45.5122308, lng: -122.6587185},
       zoom: 8
     })
-  }
+  
+
+    this.state.venues.map(myVenue => {
+
+    var maker = new window.google.maps.Marker({
+      position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
+      map: map,
+      title: "Hello world!"
+    });
+
+  })
+
+}
   
   render() {
     return (
