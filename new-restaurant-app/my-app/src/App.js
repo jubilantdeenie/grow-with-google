@@ -5,6 +5,7 @@ import './App.css';
 class App extends Component {
   
   componentDidMount() {
+    this.getVenues()
     this.loadMap()
   }
   
@@ -14,20 +15,21 @@ class App extends Component {
   }
 
   getVenues = () => {
-    const endPoint = this.initMap
+    const endPoint = "https://api.foursquare.com/v2/venues/explore?"
     const parameters = {
       client_id: "DQRJIJMNVX5GBIN1C4F5FJOREDG2TKEJTF5IXVYJSV41EQTW",
       client_secret: "BZPWNB5SJMCO0XYUFI3WDBC0F5AUP11VCLINDFWJFXPJBMSC",
-      query: "food",
-      near: "Portland"
+      query: "gluten-free",
+      near: "Portland",
+      v: "20180708"
     }
 
     axios.get(endPoint + new URLSearchParams(parameters))
      .then(response => {
-       console.log(response)
+       console.log(response.data.response.groups[0].items)
      })
      .catch(error => {
-       console.log("Error! + error")
+       console.log("Error!" + error)
      })
 
     }
