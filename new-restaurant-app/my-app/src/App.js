@@ -38,21 +38,37 @@ class App extends Component {
      })
 
     }
-
+//Create Map
   initMap = () => {
     var map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 45.5122308, lng: -122.6587185},
-      zoom: 8
+      zoom: 12
     })
   
-
+  // Create Info Window
+    var infowindow = new window.google.maps.InfoWindow()
+  
+  // Display Dynamic Markers
     this.state.venues.map(myVenue => {
 
-    var maker = new window.google.maps.Marker({
-      position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
-      map: map,
-      title: myVenue.venue.name
-    });
+      var contentString = '${myVenue.venue.name}'  
+    
+// Create Marker
+      var marker = new window.google.maps.Marker({
+        position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
+        map: map,
+        title: myVenue.venue.name
+      })
+
+// When Marker Is Clicked
+      marker.addListener('click', function() {
+       
+        // Change Content
+       infowindow.setContent(contentString)
+
+        // Open Info Window
+       infowindow.open(map, marker)
+      })
 
   })
 
