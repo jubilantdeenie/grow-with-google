@@ -51,7 +51,7 @@ class App extends Component {
   // Display Dynamic Markers
     this.state.venues.map(myVenue => {
 
-      var contentString = '${myVenue.venue.name}'  
+      var contentString = myVenue.venue.name  
     
 // Create Marker
       var marker = new window.google.maps.Marker({
