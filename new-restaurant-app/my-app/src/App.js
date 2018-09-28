@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 
+//import SideBar from './components.SideBar.js'
+//import InfoModal from './components.InfoModal.js'
+//import NavBar from './components.NavBar.js'
+//import Map from './components.Map.js'
+
+
 class App extends Component {
   
   state= {
@@ -22,7 +28,7 @@ class App extends Component {
     const parameters = {
       client_id: "DQRJIJMNVX5GBIN1C4F5FJOREDG2TKEJTF5IXVYJSV41EQTW",
       client_secret: "BZPWNB5SJMCO0XYUFI3WDBC0F5AUP11VCLINDFWJFXPJBMSC",
-      query: "gluten-free",
+      query: "gallery",
       near: "Portland",
       v: "20180708"
     }
@@ -73,13 +79,42 @@ class App extends Component {
   })
 
 }
+
+filterVenues(query) {
+  let f = query ? this.venues.filter(v => v.name.tolovercase().includes(query)) : this.venues;
+  this.marker.forEach(m => {
+    m.name.toLowerCase().includes(query) ?
+    m.setVisible(true) :
+    m.setVisible(false);
+  });
+  this.setState({ filtered: f, query: query});
+}
   
   render() {
     return (
+      //let displaySidebar = this.state.sidebarOpen ? 'block' : 'none';
+      //menuText= this.state.sidebarOpen ? "Close" : "Open";
+      
       <main>
-        <div id="map"></div>
+        <div id="map"></div> 
       </main>
       
+     /* <SideBar 
+        menuText={menuText}
+        //foursquareData={this.state.foursquareData}
+        query={this.state.query}
+        filtered={this.state.filtered}
+        sidebarOpen={this.state.sidebarOpen}
+        toggleSideBar={this.toggleSideBar}
+        liKeyEnter={this.liKeyEnter}
+        filterVenues={this.filterVenues}
+        li_click={this.li_click}
+        liKeyEnter={this.liKeyEnter}
+        handleShow={this.handleShow}
+        displaySidebar={displaySidebar}
+      />
+    */
+
     );
   }
 }
