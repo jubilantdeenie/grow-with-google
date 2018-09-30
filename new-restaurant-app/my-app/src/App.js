@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 
-//import SideBar from './components.SideBar.js'
-//import InfoModal from './components.InfoModal.js'
-//import NavBar from './components.NavBar.js'
-//import Map from './components.Map.js'
+import SideBar from './components/SideBar.js';
+//import InfoModal from './components.InfoModal'
+//import NavBar from './components.NavBar'
+//import MapDiv from './components.Map'
 
 
 class App extends Component {
@@ -28,7 +28,7 @@ class App extends Component {
     const parameters = {
       client_id: "DQRJIJMNVX5GBIN1C4F5FJOREDG2TKEJTF5IXVYJSV41EQTW",
       client_secret: "BZPWNB5SJMCO0XYUFI3WDBC0F5AUP11VCLINDFWJFXPJBMSC",
-      query: "gallery",
+      query: "gluten-free",
       near: "Portland",
       v: "20180708"
     }
@@ -80,6 +80,7 @@ class App extends Component {
 
 }
 
+
 filterVenues(query) {
   let f = query ? this.venues.filter(v => v.name.tolovercase().includes(query)) : this.venues;
   this.marker.forEach(m => {
@@ -89,18 +90,34 @@ filterVenues(query) {
   });
   this.setState({ filtered: f, query: query});
 }
+
+menuKeyEnter(event) {
+  var code = event.keyCode || event.which;
+  if(code === 13) {
+    this.toggleSideBar();
+  }
+}
+
+liKeyEnter(event, venue) {
+  var code = event.keyCode || event.which;
+  if(code === 13) {
+    this.li_click(venue);
+  }
+}
+
+
+
   
   render() {
-    return (
-      //let displaySidebar = this.state.sidebarOpen ? 'block' : 'none';
+    
+      let displaySidebar = (this.state.sidebarOpen ? 'block' : 'none');
       //menuText= this.state.sidebarOpen ? "Close" : "Open";
-      
-      <main>
-        <div id="map"></div> 
-      </main>
-      
-     /* <SideBar 
-        menuText={menuText}
+    
+      return (      
+      <div id="app-container">
+  
+     <SideBar 
+        //menuText={menuText}
         //foursquareData={this.state.foursquareData}
         query={this.state.query}
         filtered={this.state.filtered}
@@ -111,10 +128,13 @@ filterVenues(query) {
         li_click={this.li_click}
         liKeyEnter={this.liKeyEnter}
         handleShow={this.handleShow}
-        displaySidebar={displaySidebar}
-      />
-    */
+        displaySidebar={displaySidebar} />
 
+
+      <main>
+      <div id="map"></div> 
+      </main>
+      </div>
     );
   }
 }
@@ -129,3 +149,12 @@ function loadScript(url) {
 }
 
 export default App;
+
+{
+ /* <main>
+    <div id="map"></div> 
+  </main>
+
+*/
+
+}

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/core/styles';
-import Button from 'material-ui/core/Button';
+//import { withStyles } from 'material-ui/core/styles';
+//import Button from '@material-ui/core/Button';
+//import Paper from '@material-ui/core/Paper';
+//import Grid from '@material-ui/cor/Grid';
 
 import * as utils from '../utils'
-import MapDataAPI from './MapDataAPI.js'
+//import MapDataAPI from './MapDataAPI.js'
 //import RenderToLayer from 'material-ui/internal/RenderToLayer';
 //import { FloatingActionButton } from 'material-ui';
 
@@ -14,17 +16,20 @@ const styles = theme => ({
     input: {
         display: 'none',
     },
-    paper: {
-        width: theme.spacing.unit * 50,
-        backgroundColor: theme.palette.background.paper,
-        maxWidth: '95%'
-    },
-    card: {
-        maxWidth: 330,
-    },
-    media: {
-        objectFit: 'cover'
-    },
+    root: {
+        flexGrow: 1,
+    }
+    //paper: {
+      //  width: theme.spacing.unit * 50,
+     //   backgroundColor: theme.palette.background.paper,
+     //   maxWidth: '95%'
+    //},
+    //card: {
+      //  maxWidth: 330,
+    //},
+    //media: {
+      //  objectFit: 'cover'
+    //},
 });
 
 class SideBar extends Component {
@@ -35,9 +40,9 @@ class SideBar extends Component {
     }
 
     componentWillMount() {
-        utils.getFourSquarePhotos('gallery').then(photos_list => {
-            this.setState({photos_list });
-        });
+       // utils.getFoursquarePhotos('gallery').then(photos_list => {
+         //   this.setState({photos_list });
+      //  });
 }
 
         render() {
@@ -47,7 +52,7 @@ class SideBar extends Component {
             return (
                 <section id="sidebar" style={{ display: displaySidebar  }}>
                     <div id="sidebar-inner">
-
+{/*}
         <p className="text-center">
         <Button variant="contained" color="primary" className={classes.button}
             onClick={() => {this.setState(state => ({ showingVenues : !state.showingVenues})) }}>
@@ -60,7 +65,7 @@ class SideBar extends Component {
         on-click={() => { this.setState( state => ({ showingPictures : !showingPictures })) }}>
         { this.state.showingPictures ? 'Hide' : 'Show'} Photos
         </Button>
-        </p>
+            </p> 
 
         {
             this.state.showingVenues && 
@@ -78,22 +83,25 @@ class SideBar extends Component {
             <VenueCard key={key} venue={venue} li_clikc={this.props.li_click} liKeyEnter={this.props.liKeyEnter}/>
         ))
     }
-</div>
+</div> 
 </div>
 }
 
 <br/>
-
-</div>
-</section>
+*/}
+</div> 
+</section> 
 );
 }
 }
 
-export default withStyles(styles)(SideBar);
+export default (SideBar);
 
 
-{ /*let displaySidebar = this.props.sidebarOpen ? "block" : "none";
+{ /* export default withStyles(styles)(SideBar);
+    
+    
+    let displaySidebar = this.props.sidebarOpen ? "block" : "none";
 let { classes } = this.props;
 
 return(

@@ -1,4 +1,5 @@
-const api =  'https://api.foursquare.com/v2'
+{ /*
+    const api =  'https://api.foursquare.com/v2'
 const proxyurl = ''
 
 let token = localStorage.token
@@ -33,3 +34,4 @@ return fetch('${api}${venueDetailsUrl}')
         .then(data => data.response.venue)
 }
 
+*/ }
