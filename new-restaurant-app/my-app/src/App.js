@@ -76,6 +76,19 @@ class App extends Component {
        infowindow.open(map, marker)
 
       })
+
+     { /* handleMarkerClick = marker => {
+          marker.isOpen = true;
+          this.setState({ markers: Object.assign(this.state.markers, marker) });
+          const venue = this.state.venues.find(venue => venue.id === marker.id);
+
+          venue.getVenueDetails(marker.id).then(res => {
+              const newVenue = Object.assign(venue, res.response.venue);
+              this.setState({venues: Object.assign(this.state.venues, newVenue) });
+          
+          console.log(newVenue);
+          });
+      }; */ }
       
   })
 
@@ -85,8 +98,8 @@ class App extends Component {
   render() {    
       return (  
       <main>   
-          <SideBar/>   
-      <div id="map">      
+          <SideBar {...this.state} />   
+      <div id="map"{...this.state} handleMarkerClick= {this.handleMarkerClick}>      
       </div>  
       </main>     
     );

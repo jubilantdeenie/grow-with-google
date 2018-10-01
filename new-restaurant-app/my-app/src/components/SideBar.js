@@ -4,7 +4,8 @@ import VenueList from './VenueList';
 export default class SideBar extends Component {
    render(){
     return (<div className="sideBar">
-        <VenueList />
+        <input type={'search'} id={'search'} placeholder={'Filter Venues'} />
+        <VenueList {...this.props} />
     </div>
     );
    }

@@ -4,7 +4,7 @@ export default class ListItem extends Component {
     render() {
         return (
             <li className="listItem">
-            Sidebar Celebration!
+            {this.props.name}
             </li>)
     }
 }
