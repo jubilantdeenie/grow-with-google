@@ -41,11 +41,6 @@ venue-name:hover {
   to { transform: rotate(360deg); }
 }
 
-.middlr {
-  display: block;
-  margin: auto;
-}
-
 .info_box {
   width: 330px;
 }
@@ -60,17 +55,25 @@ venue-name:hover {
 }
 
 #map {
+  text-align: center;
   height: 100vh;
-  width: 100%;
-}
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+ 
 
-#sidebar {
+}
+  
+
+
+.sideBar {
   position: absolute;
   z-index: 100;
-  width: 325px;
-  max-width: 100%;
+  width: 30%;
+  max-width: 325px;
   height: 100vh;
   overflow-y: scroll;
+  background: #333;
 }
 
 

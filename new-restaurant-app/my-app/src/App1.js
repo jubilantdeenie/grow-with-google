@@ -75,20 +75,70 @@ class App extends Component {
         // Open Info Window
        infowindow.open(map, marker)
 
+       // Open SideBar
+       //this.setState.sideBarOpen
+       this.SideBar.props.setState({sidebarOpen: true});
       })
       
   })
 
 }
 
+
+filterVenues(query) {
+  let f = query ? this.venues.filter(v => v.name.tolovercase().includes(query)) : this.venues;
+  this.marker.forEach(m => {
+    m.name.toLowerCase().includes(query) ?
+    m.setVisible(true) :
+    m.setVisible(false);
+  });
+  this.setState({ filtered: f, query: query});
+}
+
+menuKeyEnter(event) {
+  var code = event.keyCode || event.which;
+  if(code === 13) {
+    this.toggleSideBar();
+  }
+}
+
+liKeyEnter(event, venue) {
+  var code = event.keyCode || event.which;
+  if(code === 13) {
+    this.li_click(venue);
+  }
+}
+
+
+
   
-  render() {    
-      return (  
-      <main>   
-          <SideBar/>   
-      <div id="map">      
-      </div>  
-      </main>     
+  render() {
+    
+      let displaySidebar = (this.state.sidebarOpen ? 'block' : 'none');
+      let menuText= this.state.sidebarOpen ? "Close" : "Open";
+    
+      return (      
+      <div id="app-container">
+  
+     <SideBar 
+        menuText={menuText}
+        //foursquareData={this.state.foursquareData}
+        query={this.state.query}
+        filtered={this.state.filtered}
+        sidebarOpen={this.state.sidebarOpen}
+        toggleSideBar={this.toggleSideBar}
+        liKeyEnter={this.liKeyEnter}
+        filterVenues={this.filterVenues}
+        li_click={this.li_click}
+        liKeyEnter={this.liKeyEnter}
+        handleShow={this.handleShow}
+        displaySidebar={displaySidebar} />
+
+
+      <main>
+      <div id="map"></div> 
+      </main>
+      </div>
     );
   }
 }
@@ -104,3 +154,11 @@ function loadScript(url) {
 
 export default App;
 
+{
+ /* <main>
+    <div id="map"></div> 
+  </main>
+
+*/
+
+}
