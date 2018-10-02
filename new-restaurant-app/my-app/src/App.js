@@ -74,6 +74,7 @@ class App extends Component {
 
         // Open Info Window
        infowindow.open(map, marker)
+       
 
       })
 
