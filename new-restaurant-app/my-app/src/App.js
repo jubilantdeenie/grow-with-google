@@ -57,7 +57,7 @@ class App extends Component {
   // Display Dynamic Markers
     this.state.venues.map(myVenue => {
 
-      var contentString = myVenue.venue.name  
+      var contentString = myVenue.venue.name 
     
 // Create Marker
       var marker = new window.google.maps.Marker({
@@ -65,6 +65,8 @@ class App extends Component {
         map: map,
         title: myVenue.venue.name
       })
+
+      console.log(this.state.venues)
 
 // When Marker Is Clicked
       marker.addListener('click', function() {
@@ -75,37 +77,64 @@ class App extends Component {
         // Open Info Window
        infowindow.open(map, marker)
        
+       
 
       })
 
-     { /* handleMarkerClick = marker => {
+      {/*closeAllMarkers = () => {
+        const markers = this.state.markers.map(marker => {
+          marker.isOpen = false;
+          return marker;
+        });
+        this.setState({ places: Object.assign(this.state.markers, markers)} );
+      };*/}
+  
+
+     {/*} handleListItemClick = venue => {
+        console.log(venue)
+      } */}
+
+   
+{/*}
+      handleMarkerClick = marker => {
+          this.closeAllMarkers();
           marker.isOpen = true;
-          this.setState({ markers: Object.assign(this.state.markers, marker) });
+          this.setState({ markers: Object.assign(this.state.places, marker) });
           const venue = this.state.venues.find(venue => venue.id === marker.id);
 
-          venue.getVenueDetails(marker.id).then(res => {
+
+          myVenue.getVenueDetails(marker.id).then(res => {
               const newVenue = Object.assign(venue, res.response.venue);
-              this.setState({venues: Object.assign(this.state.venues, newVenue) });
+              this.setState({ venues: Object.assign(this.state.venues, newVenue) });
           
           console.log(newVenue);
-          });
-      }; */ }
-      
+          }); 
+      };    */ } 
   })
 
 }
 
+render() {    
+  return (  
+  <main>   
+      <SideBar {...this.state} />
+  <div id="map"{...this.state}>      
+  </div>  
+    </main>     
+);
+}
+}
   
-  render() {    
+{ /* render() {    
       return (  
       <main>   
-          <SideBar {...this.state} />   
+          <SideBar {...this.state} handleListItemClick= {this.handleListItemClick} />
       <div id="map"{...this.state} handleMarkerClick= {this.handleMarkerClick}>      
       </div>  
-      </main>     
+        </main>     
     );
-  }
-}
+  } */ }
+
 
 function loadScript(url) {
   var index = window.document.getElementsByTagName('script')[0]

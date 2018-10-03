@@ -10,3 +10,8 @@ export default class SideBar extends Component {
     );
    }
 }
+
+{ /* 
+<VenueList {...this.props} handleListItemClick= {this.props.handleListItemClick} />
+*/
+}
