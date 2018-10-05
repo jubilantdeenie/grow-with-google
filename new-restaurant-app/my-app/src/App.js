@@ -9,10 +9,16 @@ import SideBar from './components/SideBar.js';
 
 
 class App extends Component {
+constructor () {
+  super();
+  this.state = {
+    venues:[],
+    updateSuperState: obj => {
+      this.setState(obj);
+    }
+  };
+}
   
-  state= {
-    venues:[]
-  }
   
   componentDidMount() {
     this.getVenues()
