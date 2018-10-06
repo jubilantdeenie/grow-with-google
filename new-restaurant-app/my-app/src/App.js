@@ -14,6 +14,7 @@ class App extends Component {
     super();
     this.state = {
       venues:[],
+      markers: [],
       updateSuperState: obj => {
         this.setState(obj);
       }
@@ -47,6 +48,7 @@ class App extends Component {
        this.setState({
          venues: response.data.response.groups[0].items
         }, this.loadMap())
+        console.log("venues are here" + this.state.venues);
      })
      .catch(error => {
        console.log("Error!" + error)
@@ -94,6 +96,7 @@ class App extends Component {
               
       })
 
+
       {/*closeAllMarkers = () => {
         const markers = this.state.markers.map(marker => {
           marker.isOpen = false;
@@ -122,15 +125,14 @@ class App extends Component {
           
           console.log(newVenue);
           }); 
-      };    */ } 
+      };    */ }  
   })
-
 }
 
 render() {    
   return (  
   <main>   
-      <SideBar {...this.state} />
+  <SideBar {...this.state} />
   <div id="map"{...this.state}>      
   </div>  
     </main>     
