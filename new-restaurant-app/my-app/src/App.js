@@ -1,3 +1,4 @@
+/* global google */
 import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
@@ -9,15 +10,17 @@ import SideBar from './components/SideBar.js';
 
 
 class App extends Component {
-constructor () {
-  super();
-  this.state = {
-    venues:[],
-    updateSuperState: obj => {
-      this.setState(obj);
-    }
-  };
-}
+  constructor () {
+    super();
+    this.state = {
+      venues:[],
+      updateSuperState: obj => {
+        this.setState(obj);
+      }
+    };
+  }
+
+
   
   
   componentDidMount() {
@@ -69,9 +72,14 @@ constructor () {
       var marker = new window.google.maps.Marker({
         position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
         map: map,
-        title: myVenue.venue.name
+        title: myVenue.venue.name,
+        venue: myVenue.venue,
+        id: myVenue.venue.id,
+        name: myVenue.venue.name,
+        photos: myVenue.venue.photos, 
+        animation: [myVenue.length === 1 ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP]
       })
-
+      
       console.log(this.state.venues)
 
 // When Marker Is Clicked
@@ -82,9 +90,8 @@ constructor () {
 
         // Open Info Window
        infowindow.open(map, marker)
-       
-       
 
+              
       })
 
       {/*closeAllMarkers = () => {
@@ -130,17 +137,6 @@ render() {
 );
 }
 }
-  
-{ /* render() {    
-      return (  
-      <main>   
-          <SideBar {...this.state} handleListItemClick= {this.handleListItemClick} />
-      <div id="map"{...this.state} handleMarkerClick= {this.handleMarkerClick}>      
-      </div>  
-        </main>     
-    );
-  } */ }
-
 
 function loadScript(url) {
   var index = window.document.getElementsByTagName('script')[0]
@@ -153,3 +149,22 @@ function loadScript(url) {
 
 export default App;
 
+{ /* constructor () {
+  super();
+  this.state = {
+    venues:[],
+    updateSuperState: obj => {
+      this.setState(obj);
+    }
+  };
+}   */ }
+
+{ /* render() {    
+  return (  
+  <main>   
+      <SideBar {...this.state} handleListItemClick= {this.handleListItemClick} />
+  <div id="map"{...this.state} handleMarkerClick= {this.handleMarkerClick}>      
+  </div>  
+    </main>     
+);
+} */ }
